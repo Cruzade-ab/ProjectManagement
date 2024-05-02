@@ -1,31 +1,12 @@
-// const data = fetch('') {
-// {if(res.True)    data = {name, descripcion, status}}
-// 
-// 
-
-
-export default function ProjectCard({name, descripcion, status}){
 
 
 
-
-    return(
-        <>
-        
-        <div>
-            <div>
-                <h1> {name}</h1>
-            </div>
-            <div>
-                {descripcion}
-            </div>
-            <p>
-                {status}
-            </p>
+export default function ProjectCard({ project}) {
+    return (
+        <div className="border ">
+            <h3 className="">{project.name}</h3>
+            <p className="">{project.description}</p>
+            <p className="">{project.status}</p>
         </div>
-        
-        
-        </>
-    )
-
+    );
 }
