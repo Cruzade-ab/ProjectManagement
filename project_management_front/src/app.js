@@ -1,40 +1,13 @@
 import ProjectContainer from "./components/projectContainer";
+import EditMode from "./components/editComponent";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FilterComponent from "./components/filterComponent";
 
 import React, { useState } from "react";
 
 
-function FilterComponent({filter, handleFilterChange}) {
-    return (
-      <div className="vh-100%">
-        <h2>Filtro Actual: {filter}</h2>
-        <button onClick={() => handleFilterChange('All')}>All</button>
-        <button onClick={() => handleFilterChange('Progress')}>Progress</button>
-        <button onClick={() => handleFilterChange('Complete')}>Complete</button>
-        <button onClick={() => handleFilterChange('Deleted')}>Deleted</button>
-      </div>
-    );
-  }
 
-  function EditMode({editMode, changeEditMode}) {    
-    return (
-        <div>
-            {editMode ? (
-                <div>
-                    <p>Modo de edición ACTIVO</p>
-                </div>
-            ) : (
-                <div>
-                    <p>Modo de edición NO ACTIVO</p>
-                </div>
-            )}
-            <button onClick={changeEditMode}>
-                {editMode ? 'Desactivar Modo de Edición' : 'Activar Modo de Edición'}
-            </button>
-        </div>
-    );
-}
-
+  
 
 export default function App(){
 
