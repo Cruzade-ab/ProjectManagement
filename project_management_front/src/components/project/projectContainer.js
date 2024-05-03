@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import ProjectCard from "./projectCard";  
+import ProjectDetails from "./projectDetails";  
+import { Link } from "react-router-dom";
 
 export default function ProjectContainer({ filter, editMode }) {
     const [projects, setProjects] = useState([]);
@@ -41,7 +42,9 @@ export default function ProjectContainer({ filter, editMode }) {
     return (
         <div>
             {filteredProjects.map(project => (
-                <ProjectCard key={project.project_id} project={project} editMode={editMode} />
+            <Link key={project.project_id} to={`/project/${project.project_id}`}>
+               <ProjectDetails project={project} editMode={editMode} />
+           </Link>
             ))}
         </div>
     );

@@ -1,53 +1,36 @@
-import ProjectContainer from "./components/projectContainer";
-import EditMode from "./components/editComponent";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import FilterComponent from "./components/filterComponent";
-
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+import BaseLayout from "./components/home/baseLayout";
+import ProjectContainer from "./components/project/projectContainer";
+import ProjectCard from "./components/project/projectDetails";
 
-
-  
-
-export default function App(){
-
+export default function App() {
     const [filter, setFilter] = useState('all');
     const [editMode, setEditMode] = useState(false);
 
-    const changeEditMode = () => {
-        setEditMode(!editMode);
-    };
-
-    const handleFilterChange = (filterOption) => {
-        console.log('Filtering products by: ', {filterOption})
-        setFilter(filterOption);
-      };
-
-
-
+    const changeEditMode = () => setEditMode(!editMode);
+    const handleFilterChange = (filterOption) => setFilter(filterOption);
 
     return (
-   
-    <div className="vh-100 d-flex flex-col justify-content-center align-items-center">
-
-        <div className="w-30 border d-dlex flex-col justify-content-center align-items-center">
-            <div className="" >
-                Project Controls
-            </div>
-
-            <FilterComponent filter={filter} handleFilterChange={handleFilterChange} />
-            <EditMode editMode={editMode} changeEditMode={changeEditMode}/>
-        </div>
-
-        <div className="w-70 border">
-            <h1>Proyectos En Sistema</h1>
-            <ProjectContainer filter={filter} editMode={editMode} />
-        </div>
-
-        
-    </div>
-  
-    )
-    
- 
+        <Router>
+            <Routes>
+                <Route path="/" element={
+                    <BaseLayout 
+                        filter={filter} 
+                        handleFilterChange={handleFilterChange} 
+                        editMode={editMode} 
+                        changeEditMode={changeEditMode}>
+                        <ProjectContainer />
+                    </BaseLayout>
+                }>
+                    {/* Define route for the project container */}
+                    <Route index element={<ProjectContainer filter={filter} editMode={editMode} />} />
+                    {/* Define route for individual project details */}
+                    <Route path="project/:projectId" element={<ProjectCard />} />
+                </Route>
+            </Routes>
+        </Router>
+    );
 }
