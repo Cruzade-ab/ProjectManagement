@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import TaskCard from '../Cards/TaskCard';
-import Navbar from '../Navbar';
+import NavbarTask from '../Navbar/TaskNavbar';
 import Task from '../../interfaces/Task';
 
 
@@ -32,7 +32,7 @@ const TasksContainers: React.FC = () => {
 
     return (
         <>
-        <Navbar />
+        <NavbarTask task={tasks} />
         
         <div>
             {tasks.map(task => (

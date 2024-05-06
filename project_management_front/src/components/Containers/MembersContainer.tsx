@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MemberCard from '../Cards/MemberCard';
 import Member from '../../interfaces/Member';
-import Navbar from '../Navbar';
+import NavbarMember from '../Navbar/MemberNavbar';
 
 
 const MembersContainer: React.FC = () => {
@@ -32,7 +32,7 @@ const MembersContainer: React.FC = () => {
 
     return (
         <>
-        <Navbar />
+       <NavbarMember member={members}/>
         
         <div>
             {members.map(member => (
