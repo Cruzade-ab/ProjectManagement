@@ -1,9 +1,9 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ProjectContainer from './components/ProjectContainer';
-import ProjectDetail from './components/ProjectPage';  
+import ProjectsContainer from './components/Containers/ProjectContainer';
+
+
 
 function App() {
   return (
@@ -11,8 +11,9 @@ function App() {
       <div>
         {/* You can add a Navbar here if you want */}
         <Routes>
-          <Route path="/" element={<ProjectContainer />} /> 
-          <Route path="/project/:id" element={<ProjectDetail />} />  
+          <Route path="/" element={<ProjectsContainer />} />
+          <Route path="/members" element={<TasksContainer />} /> 
+          <Route path="/tasks" element={<MembersContainer />} />
         </Routes>
       </div>
     </Router>

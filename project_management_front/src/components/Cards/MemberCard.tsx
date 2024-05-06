@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const MemberDetails: React.FC<{ projectId: string }> = ({ projectId }) => {
+const MemberCard: React.FC<{ projectId: string }> = ({ projectId }) => {
     const [members, setMembers] = useState([]);
   
     useEffect(() => {
@@ -17,4 +17,4 @@ const MemberDetails: React.FC<{ projectId: string }> = ({ projectId }) => {
     );
   };
 
-export default MemberDetails
+export default MemberCard

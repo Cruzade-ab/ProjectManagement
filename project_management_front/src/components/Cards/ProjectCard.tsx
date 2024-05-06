@@ -1,12 +1,12 @@
 import React from 'react';
-import Project from '../interfaces/Project';
+import Project from '../../interfaces/Project';
 import { Link } from 'react-router-dom';
 
 interface ProjectProps {
   project: Project;
 }
 
-const ProjectComponent: React.FC<ProjectProps> = ({ project }) => {
+const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
   return (
     <div className="project">
       <Link to={`/project/${project.project_id}`}>
@@ -18,4 +18,4 @@ const ProjectComponent: React.FC<ProjectProps> = ({ project }) => {
   );
 };
 
-export default ProjectComponent;
+export default ProjectCard;

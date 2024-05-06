@@ -25,7 +25,7 @@ export default function Navbar() {
                             </li>
                             <li className="nav-link">
                                 <button>
-                                    Edit Mode
+                                    Add
                                 </button>
                             </li>
                         </ul>
