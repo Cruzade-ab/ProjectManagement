@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import TaskCard from '../Cards/TaskCard';
-import Navbar from '../Navbar';
+import NavbarTask from '../Navbar/TaskNavbar';
 import Task from '../../interfaces/Task';
 
 
@@ -16,9 +16,9 @@ const TasksContainers: React.FC = () => {
                 return response.json();
             })
             .then(data => {
-                if (Array.isArray(data.projects)) {
-                    setTasks(data.projects);
-                    console.log('Task Fetch: ', data.projects);
+                if (Array.isArray(data.data)) {
+                    setTasks(data.data);
+                    console.log('Task Fetch: ', data.data);
                 } else {
                     console.error("Fetched data is not an array:", data);
                     setTasks([]);
@@ -32,7 +32,7 @@ const TasksContainers: React.FC = () => {
 
     return (
         <>
-        <Navbar />
+        <NavbarTask task={tasks} />
         
         <div>
             {tasks.map(task => (

@@ -1,6 +1,10 @@
+import Member from "../../interfaces/Member"
 
 
-export default function Navbar() {
+interface NavbarPropos {
+    member: Member[];
+  }
+  const NavbarMember: React.FC<NavbarPropos> = ({member}) => {
 
 
     return (
@@ -19,15 +23,11 @@ export default function Navbar() {
                                 </a>
                                 <ul className="dropdown-menu">
                                     <li><a className="dropdown-item" href="/">Projects</a></li>
-                                    <li><a className="dropdown-item" href="/member">Members</a></li>
+                                    <li><a className="dropdown-item" href="/members">Members</a></li>
                                     <li><a className="dropdown-item" href="/tasks">Tasks</a></li>
                                 </ul>
                             </li>
-                            <li className="nav-link">
-                                <button>
-                                    Add
-                                </button>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -35,3 +35,6 @@ export default function Navbar() {
         </>
     )
 }
+
+
+export default NavbarMember

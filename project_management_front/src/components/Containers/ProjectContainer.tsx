@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProjectCard from '../Cards/ProjectCard';
 import Project from '../../interfaces/Project';
-import Navbar from '../Navbar';
-
+import NavbarProject from '../Navbar/ProjectNavbar';
 
 const ProjectsContainer: React.FC = () => {
    
@@ -33,7 +32,7 @@ const ProjectsContainer: React.FC = () => {
 
     return (
         <>
-        <Navbar />
+        <NavbarProject project={projects}/>
         
         <div>
             {projects.map(project => (
