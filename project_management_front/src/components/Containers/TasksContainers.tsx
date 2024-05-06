@@ -16,9 +16,9 @@ const TasksContainers: React.FC = () => {
                 return response.json();
             })
             .then(data => {
-                if (Array.isArray(data.projects)) {
-                    setTasks(data.projects);
-                    console.log('Task Fetch: ', data.projects);
+                if (Array.isArray(data.data)) {
+                    setTasks(data.data);
+                    console.log('Task Fetch: ', data.data);
                 } else {
                     console.error("Fetched data is not an array:", data);
                     setTasks([]);

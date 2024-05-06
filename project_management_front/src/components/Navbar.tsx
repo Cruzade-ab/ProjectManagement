@@ -19,7 +19,7 @@ export default function Navbar() {
                                 </a>
                                 <ul className="dropdown-menu">
                                     <li><a className="dropdown-item" href="/">Projects</a></li>
-                                    <li><a className="dropdown-item" href="/member">Members</a></li>
+                                    <li><a className="dropdown-item" href="/members">Members</a></li>
                                     <li><a className="dropdown-item" href="/tasks">Tasks</a></li>
                                 </ul>
                             </li>
