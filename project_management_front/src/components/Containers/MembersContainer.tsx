@@ -32,7 +32,7 @@ const MembersContainer: React.FC<MembersContainerProps> = ({ selectedProject }) 
     //useEffect solicita a la api la data de get all members, hasta que se complete mantiene el estado de loading true, de ocurri un
     // error se muestra el modal, de lo contrario se asigna la data a la constante members
     useEffect(() => {
-        fetch('http://127.0.0.1:5000/api/get_all_members')
+        fetch('http://172.16.5.78:5000/api/members')
             .then(response => {
                 if (!response.ok) {
                     setErrorMessage('Network response was not ok');

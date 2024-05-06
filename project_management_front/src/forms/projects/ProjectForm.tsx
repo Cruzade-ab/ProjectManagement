@@ -36,7 +36,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing , on
   const onSubmit: SubmitHandler<Project> = async data => {
     console.log('Attempting to submit form', data);
 
-    const url = isEditing ? `http://127.0.0.1:5000/api/update_project/${defaultValues.project_id}` : 'http://127.0.0.1:5000/api/new_project';
+    const url = isEditing ? `http://172.16.5.78:5000/api/update_project/${defaultValues.project_id}` : 'http://172.16.5.78:5000/api/new_project';
     const method = isEditing ? 'PUT' : 'POST';
 
     console.log('Making API request to:', url);

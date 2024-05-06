@@ -49,7 +49,7 @@ const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSu
   const onSubmit: SubmitHandler<Member> = async data => {
     console.log('Form data', data);
 
-    const url = isEditing ? `http://127.0.0.1:5000/api/update_member/${defaultValues.project_id}/${defaultValues.member?.member_id}` : `http://127.0.0.1:5000/api/add_members/${defaultValues.project_id}`;
+    const url = isEditing ? `http://172.16.5.78:5000/api/update_member/${defaultValues.project_id}/${defaultValues.member?.member_id}` : `http://172.16.5.78:5000/api/add_members/${defaultValues.project_id}`;
     const method = isEditing ? 'PUT' : 'POST';
 
 

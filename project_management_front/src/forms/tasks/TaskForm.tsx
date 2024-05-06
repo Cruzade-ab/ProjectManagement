@@ -28,7 +28,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing, onSubmitS
 
   React.useEffect(() => {
     if (project_id) {
-      fetch(`http://127.0.0.1:5000/api/get_members_by_project/${project_id}`)
+      fetch(`http://172.16.5.78:5000/api/get_members_by_project/${project_id}`)
         .then(response => response.json())
         .then(setMembers)
         .catch(console.error);
