@@ -18,9 +18,9 @@ export default function Navbar() {
                                     Filter
                                 </a>
                                 <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">All</a></li>
-                                    <li><a className="dropdown-item" href="#">Complete</a></li>
-                                    <li><a className="dropdown-item" href="#">Progress</a></li>
+                                    <li><a className="dropdown-item" href="/">Projects</a></li>
+                                    <li><a className="dropdown-item" href="/member">Members</a></li>
+                                    <li><a className="dropdown-item" href="/tasks">Tasks</a></li>
                                 </ul>
                             </li>
                             <li className="nav-link">

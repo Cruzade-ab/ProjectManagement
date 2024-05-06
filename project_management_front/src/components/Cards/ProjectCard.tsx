@@ -8,11 +8,18 @@ interface ProjectProps {
 }
 
 const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
+
+
+
   return (
     <div className="project">
         <h3>{project.project_name} (ID: {project.project_id})</h3>
       <p>{project.description}</p>
       <p>Status: {project.status}</p>
+
+      <button>
+        
+      </button>
 
     </div>
   );
