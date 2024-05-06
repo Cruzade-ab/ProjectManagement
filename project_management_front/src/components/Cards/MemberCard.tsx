@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import Member from "../../interfaces/Member";
 
-const MemberCard: React.FC<{ projectId: string }> = ({ projectId }) => {
-    const [members, setMembers] = useState([]);
+interface MembersProps {
+  member: Member;
   
-    useEffect(() => {
-      fetch(`/api/members/${projectId}`)
-        .then(response => response.json())
-        .then(data => setMembers(data))
-        .catch(console.error);
-    }, [projectId]);
-  
-    return (
-      <div>
-        Members
-      </div>
-    );
-  };
+}
+
+
+const MemberCard: React.FC<MembersProps> = ({ member }) => {
+
+
+  return (
+    <div className="project">
+        <h3>{member.member_name} (ID: {member.member_id})</h3>
+
+    </div>
+  );
+};
 
 export default MemberCard

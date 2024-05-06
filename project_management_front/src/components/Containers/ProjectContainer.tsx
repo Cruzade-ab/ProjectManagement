@@ -5,6 +5,7 @@ import Navbar from '../Navbar';
 
 
 const ProjectsContainer: React.FC = () => {
+   
     const [projects, setProjects] = useState<Project[]>([]); 
 
     useEffect(() => {
