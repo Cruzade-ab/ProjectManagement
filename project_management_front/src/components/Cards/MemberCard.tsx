@@ -3,17 +3,20 @@ import Member from "../../interfaces/Member";
 
 interface MembersProps {
   member: Member;
-  
 }
 
 
 const MemberCard: React.FC<MembersProps> = ({ member }) => {
 
-
   return (
-    <div className="member">
+    <div className="">
         <h3>{member.member_name} (ID: {member.member_id})</h3>
-        <p>{member.role}</p>
+        <button>
+          Edit
+        </button>
+        <button>
+          Delete
+        </button>        <p>{member.role}</p>
 
     </div>
   );

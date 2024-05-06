@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import ProjectComponent from '../Cards/ProjectCard';
-import Project from '../../interfaces/Project';
+import MemberCard from '../Cards/MemberCard';
+import Member from '../../interfaces/Member';
 import Navbar from '../Navbar';
 
 
 const MembersContainer: React.FC = () => {
-    const [projects, setProjects] = useState<Project[]>([]); 
+    const [members, setMembers] = useState<Member[]>([]); 
 
     useEffect(() => {
         fetch('http://172.16.5.78:5000/api/projects')
@@ -17,16 +17,16 @@ const MembersContainer: React.FC = () => {
             })
             .then(data => {
                 if (Array.isArray(data.projects)) {
-                    setProjects(data.projects);
+                    setMembers(data.projects);
                     console.log('Projects Fetch: ', data.projects);
                 } else {
                     console.error("Fetched data is not an array:", data);
-                    setProjects([]);
+                    setMembers([]);
                 }
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
-                setProjects([]);
+                setMembers([]);
             });
     }, []);
 
@@ -35,8 +35,8 @@ const MembersContainer: React.FC = () => {
         <Navbar />
         
         <div>
-            {projects.map(project => (
-                <ProjectComponent key={project.project_id} project={project} />
+            {members.map(member => (
+                <MemberCard key={member.member_id} member={member} />
             ))}
         </div>
         </>
