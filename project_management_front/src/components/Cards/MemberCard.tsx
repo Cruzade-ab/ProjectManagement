@@ -11,12 +11,13 @@ const MemberCard: React.FC<MembersProps> = ({ member }) => {
   return (
     <div className="">
         <h3>{member.member_name} (ID: {member.member_id})</h3>
-        <button>
+        <button >
           Edit
         </button>
-        <button>
+        <button >
           Delete
-        </button>        <p>{member.role}</p>
+        </button>
+        <p>{member.role}</p>
 
     </div>
   );
