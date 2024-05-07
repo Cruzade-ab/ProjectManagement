@@ -24,7 +24,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
       <p>Status: {project.status}</p>
 
       <button onClick={openModal}>
-        Edit
+        Update
       </button>
       <Modal  isOpen={isModalOpen} onClose={closeModal}>
         <ProjectForm isEditing={true} defaultValues={{project_name: project.project_name, description: project.description, status: project.status, project_id: project.project_id}}></ProjectForm>
