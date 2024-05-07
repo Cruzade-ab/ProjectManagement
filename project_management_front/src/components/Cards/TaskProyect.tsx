@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {ProjectTasks, Task} from "../../interfaces/Task";
 import TaskCard from "./TaskCard";
+import Modal from "../Modal/modal";
+import TaskForm from "../../forms/tasks/TaskForm";
 
 interface ProjectTasksProps {
   projectTask: ProjectTasks;
@@ -10,8 +12,12 @@ interface ProjectTasksProps {
 
 const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask }) => {
   const [tasks, setTasks] = useState<Task[]>([]); 
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
+
   useEffect(() => {
     setTasks(projectTask.tasks);
   }, [projectTask.tasks]);
@@ -21,6 +27,13 @@ const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask }) => {
         <div>
             Project Name: {projectTask.project_name}
         </div>
+
+        <button onClick={openModal}>
+            Add Task
+        </button>
+        <Modal  isOpen={isModalOpen} onClose={closeModal}>
+            <TaskForm isEditing={false} defaultValues={{}}></TaskForm>
+        </Modal>
 
         <div>
             {tasks.map(task => (
