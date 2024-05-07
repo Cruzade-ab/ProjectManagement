@@ -8,7 +8,7 @@ const TasksContainers: React.FC = () => {
     const [tasks, setTasks] = useState<Task[]>([]); 
 
     useEffect(() => {
-        fetch('http://172.16.5.78:5000/api/get_all_tasks')
+        fetch('http://10.0.0.73:5000/api/get_all_tasks')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

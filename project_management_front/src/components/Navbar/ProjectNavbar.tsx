@@ -1,10 +1,18 @@
+import React, { useState } from "react";
 import Project from "../../interfaces/Project"
+import Modal from "../Modal/modal";
+import ProjectForm from "../../forms/projects/ProjectForm";
+
 
 
 interface NavbarProjectPropos {
     project: Project[];
   }
   const NavbarProject: React.FC<NavbarProjectPropos> = ({project}) => {
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => setModalOpen(true);
+    const closeModal = () => setModalOpen(false);
 
 
     return (
@@ -28,9 +36,10 @@ interface NavbarProjectPropos {
                                 </ul>
                             </li>
                             <li className="nav-link">
-                                <button>
-                                    Add Project
-                                </button>
+                            <button onClick={openModal}>Add Project</button>
+                            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                                <ProjectForm isEditing={false} defaultValues={ {project_name: '', description:'', status:''} } />
+                            </Modal>
                             </li>
                         </ul>
                     </div>
