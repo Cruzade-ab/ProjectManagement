@@ -25,7 +25,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
         </div>
         <hr />
         <p className="card-text">Description: {project.description}</p>
-        <p className="card-text">Status: {project.description}</p>
+        <p className="card-text">Status: {project.status}</p>
     </div>
 </div>
     
