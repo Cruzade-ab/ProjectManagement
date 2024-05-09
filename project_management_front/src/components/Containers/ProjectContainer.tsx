@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ProjectCard from '../Cards/ProjectCard';
+import ProjectCard from '../Cards/proyecto/ProjectCard';
 import Project from '../../interfaces/Project';
 import NavbarProject from '../Navbar/ProjectNavbar';
 

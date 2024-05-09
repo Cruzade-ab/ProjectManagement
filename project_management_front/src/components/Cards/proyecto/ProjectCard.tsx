@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Project from '../../interfaces/Project';
-import Modal from '../Modal/modal';
-import ProjectForm from '../../forms/projects/ProjectForm';
-import './css/style.css';
+import Project from '../../../interfaces/Project';
+import Modal from '../../Modal/modal';
+import ProjectForm from '../../../forms/projects/ProjectForm';
+import '../css/style.css';
 interface ProjectProps {
   project: Project;
 }
@@ -20,6 +20,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
 
   return (
 
+    <>
     <div className="card mb-4">
     <div className="card-body">
         <div className="d-flex justify-content-between align-items-center">
@@ -38,7 +39,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
       </Modal>
     </div>
 </div>
-    
+</> 
   );
 };
 

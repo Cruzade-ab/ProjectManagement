@@ -57,15 +57,30 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Project Name</label>
-      <input {...register('task_name')} />
-      {errors.task_name && <p>{errors.task_name.message}</p>}
+<form onSubmit={handleSubmit(onSubmit)} className="mt-4">
+  <div className="mb-3">
+    <label htmlFor="task_name" className="form-label">Task Name</label>
+    <input {...register('task_name')} type="text" className={`form-control ${errors.task_name ? 'is-invalid' : ''}`} id="task_name" />
+    {errors.task_name && <div className="invalid-feedback">{errors.task_name.message}</div>}
+  </div>
 
-     {/* Agregar los otros field para llenar los tasks */}
+  <div className="mb-3">
+    <label htmlFor="start_date" className="form-label">Start Date</label>
+    <input {...register('start_date')} type="date" className={`form-control ${errors.start_date ? 'is-invalid' : ''}`} />
+    {errors.start_date && <div className="invalid-feedback">{errors.start_date.message}</div>}
+  </div>
 
-      <button type="submit">{isEditing ? 'Update' : 'Create'}</button>
-    </form>
+  <div className="mb-3">
+    <label htmlFor="end_date" className="form-label">End Date</label>
+    <input {...register('end_date')} type="date" className={`form-control ${errors.end_date ? 'is-invalid' : ''}`} id="end_date" />
+    {errors.end_date && <div className="invalid-feedback">{errors.end_date.message}</div>}
+  </div>
+
+  <button type="submit" className="btn btn-primary">{isEditing ? 'Update' : 'Create'}</button>
+</form>
+
+  
+
   );
 };
 
