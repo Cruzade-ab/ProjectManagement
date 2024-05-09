@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import TaskCard from '../Cards/TaskCard';
-import Navbar from '../Navbar';
-import Task from '../../interfaces/Task';
+import TaskCard from '../Cards/tasks/TaskCard';
+import NavbarTask from '../Navbar/TaskNavbar';
+import {Task, ProjectTasks} from '../../interfaces/Task';
+import TasksProject from '../Cards/tasks/TaskProyect';
 
 
 const TasksContainers: React.FC = () => {
-    const [tasks, setTasks] = useState<Task[]>([]); 
+    const [projectTasks, setProjectTasks] = useState<ProjectTasks[]>([]); 
 
     useEffect(() => {
         fetch('http://172.16.5.78:5000/api/get_all_tasks')
@@ -16,27 +17,27 @@ const TasksContainers: React.FC = () => {
                 return response.json();
             })
             .then(data => {
-                if (Array.isArray(data.projects)) {
-                    setTasks(data.projects);
-                    console.log('Task Fetch: ', data.projects);
+                if (Array.isArray(data.data)) {
+                    setProjectTasks(data.data);
+                    console.log('Task Fetch: ', data.data);
                 } else {
                     console.error("Fetched data is not an array:", data);
-                    setTasks([]);
+                    setProjectTasks([]);
                 }
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
-                setTasks([]);
+                setProjectTasks([]);
             });
     }, []);
 
     return (
         <>
-        <Navbar />
+        <NavbarTask task={projectTasks} />
         
         <div>
-            {tasks.map(task => (
-                <TaskCard key={task.task_id} task={task} />
+            {projectTasks.map(projectTask => (
+                <TasksProject key={projectTask.project_id} projectTask={projectTask} />
             ))}
         </div>
         </>

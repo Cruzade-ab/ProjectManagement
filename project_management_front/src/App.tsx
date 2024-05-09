@@ -4,6 +4,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProjectsContainer from './components/Containers/ProjectContainer';
 import MembersContainer from './components/Containers/MembersContainer';
+import TasksContainers from './components/Containers/TasksContainers';
+import React from 'react';
 
 
 
@@ -14,8 +16,8 @@ function App() {
         {/* You can add a Navbar here if you want */}
         <Routes>
           <Route path="/" element={<ProjectsContainer />} />
-          {/* <Route path="/members" element={<TasksContainer />} />  */}
-          <Route path="/tasks" element={<MembersContainer />} />
+          <Route path="/tasks" element={<TasksContainers />} /> 
+          <Route path="/members" element={<MembersContainer />} />
         </Routes>
       </div>
     </Router>

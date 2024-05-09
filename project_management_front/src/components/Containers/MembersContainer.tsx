@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import MemberCard from '../Cards/MemberCard';
-import Member from '../../interfaces/Member';
-import Navbar from '../Navbar';
+import MemberCard from '../Cards/member/MemberCard';
+import {Member }from '../../interfaces/Member';
+import NavbarMember from '../Navbar/MemberNavbar';
 
 
 const MembersContainer: React.FC = () => {
     const [members, setMembers] = useState<Member[]>([]); 
 
     useEffect(() => {
-        fetch('http://172.16.5.78:5000/api/projects')
+        fetch('http://172.16.5.78:5000/api/get_all_members')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -32,7 +32,7 @@ const MembersContainer: React.FC = () => {
 
     return (
         <>
-        <Navbar />
+       <NavbarMember member={members}/>
         
         <div>
             {members.map(member => (

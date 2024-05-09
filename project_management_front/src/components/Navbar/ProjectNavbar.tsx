@@ -1,6 +1,18 @@
+import React, { useState } from "react";
+import Project from "../../interfaces/Project"
+import Modal from "../Modal/modal";
+import ProjectForm from "../../forms/projects/ProjectForm";
 
 
-export default function Navbar() {
+
+interface NavbarProjectPropos {
+    project: Project[];
+  }
+  const NavbarProject: React.FC<NavbarProjectPropos> = ({project}) => {
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => setModalOpen(true);
+    const closeModal = () => setModalOpen(false);
 
 
     return (
@@ -19,14 +31,15 @@ export default function Navbar() {
                                 </a>
                                 <ul className="dropdown-menu">
                                     <li><a className="dropdown-item" href="/">Projects</a></li>
-                                    <li><a className="dropdown-item" href="/member">Members</a></li>
+                                    <li><a className="dropdown-item" href="/members">Members</a></li>
                                     <li><a className="dropdown-item" href="/tasks">Tasks</a></li>
                                 </ul>
                             </li>
                             <li className="nav-link">
-                                <button>
-                                    Add
-                                </button>
+                            <button onClick={openModal}>Add Project</button>
+                            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                                <ProjectForm isEditing={false} defaultValues={ {project_name: '', description:'', status:''} } />
+                            </Modal>
                             </li>
                         </ul>
                     </div>
@@ -35,3 +48,6 @@ export default function Navbar() {
         </>
     )
 }
+
+
+export default NavbarProject
