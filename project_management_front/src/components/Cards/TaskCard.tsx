@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Task from "../../interfaces/Task";
+import './css/style.css';
 
 interface TasksProps {
   task: Task;
