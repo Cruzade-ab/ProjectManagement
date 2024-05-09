@@ -1,9 +1,9 @@
 import React from "react";
-import Member from "../../interfaces/Member"
+import {Member, MemberTeam} from "../../interfaces/Member"
 
 
 interface NavbarPropos {
-    member: Member[];
+    member: MemberTeam[];
   }
   const NavbarMember: React.FC<NavbarPropos> = ({member}) => {
 

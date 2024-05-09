@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import TaskCard from '../Cards/TaskCard';
+import TaskCard from '../Cards/tasks/TaskCard';
 import NavbarTask from '../Navbar/TaskNavbar';
 import {Task, ProjectTasks} from '../../interfaces/Task';
-import TasksProject from '../Cards/TaskProyect';
+import TasksProject from '../Cards/tasks/TaskProyect';
 
 
 const TasksContainers: React.FC = () => {
     const [projectTasks, setProjectTasks] = useState<ProjectTasks[]>([]); 
 
     useEffect(() => {
-        fetch('http://10.0.0.73:5000/api/get_all_tasks')
+        fetch('http://172.16.5.78:5000/api/get_all_tasks')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

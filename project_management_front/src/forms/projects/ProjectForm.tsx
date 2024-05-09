@@ -29,8 +29,10 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing }) =
   const onSubmit: SubmitHandler<Project> = async data => {
     console.log('Form data', data);
 
-    const url = isEditing ? `http://127.0.0.1:5000/projects/${defaultValues.project_id}` : 'http://127.0.0.1:5000/api/new_project';
-    const method = isEditing ? 'PUT' : 'POST';
+    const url = isEditing ? `http://172.16.5.78:5000/api/update_project.${defaultValues.project_id}` : 'http://172.16.5.78:5000/api/new_projects';
+    const method = isEditing ? 'POST' : 'POST';
+
+    console.log("Direction Fetch",url)
 
 
     try {

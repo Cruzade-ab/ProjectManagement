@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {ProjectTasks, Task} from "../../interfaces/Task";
+import {ProjectTasks, Task} from "../../../interfaces/Task";
 import TaskCard from "./TaskCard";
-import Modal from "../Modal/modal";
-import TaskForm from "../../forms/tasks/TaskForm";
+import Modal from "../../Modal/modal";
+import TaskForm from "../../../forms/tasks/TaskForm";
 
 interface ProjectTasksProps {
   projectTask: ProjectTasks;

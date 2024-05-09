@@ -29,7 +29,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing }) => {
   const onSubmit: SubmitHandler<Task> = async data => {
     console.log('Form data', data);
 
-    const url = isEditing ? `http://127.0.0.1:5000/projects/${defaultValues.project_id}` : 'http://127.0.0.1:5000/api';
+    const url = isEditing ? `http://172.16.5.78:5000/projects/${defaultValues.project_id}` : 'http://172.16.5.78:5000/api';
     const method = isEditing ? 'PUT' : 'POST';
 
 

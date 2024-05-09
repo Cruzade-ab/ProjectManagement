@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Member from "../../interfaces/Member";
+import {Member} from "../../../interfaces/Member";
 
 interface MembersProps {
   member: Member;
