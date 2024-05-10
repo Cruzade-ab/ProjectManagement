@@ -16,6 +16,11 @@ const TaskCard: React.FC<TasksProps> = ({ task }) => {
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
+  console.log("Task: ", task.task_name)
+  console.log("Start date is ", task.start_date, typeof(task.start_date))
+  console.log("End date is ", task.end_date, typeof(task.end_date))
+
+
   return (
     <>
 <div className="row mb-4 w-100">

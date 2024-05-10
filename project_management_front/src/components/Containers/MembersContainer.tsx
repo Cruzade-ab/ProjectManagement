@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import MemberCard from '../Cards/member/MemberCard';
-import {Member }from '../../interfaces/Member';
+import {MemberTeam }from '../../interfaces/Member';
 import NavbarMember from '../Navbar/MemberNavbar';
+import MemberProject from '../Cards/member/MemberProject';
 
 
 const MembersContainer: React.FC = () => {
-    const [members, setMembers] = useState<Member[]>([]); 
+    const [members, setMembers] = useState<MemberTeam[]>([]); 
 
     useEffect(() => {
         fetch('http://127.0.0.1:5000/api/get_all_members')
@@ -16,9 +17,9 @@ const MembersContainer: React.FC = () => {
                 return response.json();
             })
             .then(data => {
-                if (Array.isArray(data.projects)) {
-                    setMembers(data.projects);
-                    console.log('Projects Fetch: ', data.projects);
+                if (Array.isArray(data.members)) {
+                    setMembers(data.members);
+                    console.log('Members Fetch: ', data.members);
                 } else {
                     console.error("Fetched data is not an array:", data);
                     setMembers([]);
@@ -36,9 +37,11 @@ const MembersContainer: React.FC = () => {
         
         <div>
             {members.map(member => (
-                <MemberCard key={member.member_id} member={member} />
+                <MemberProject key={member.project_id} projectTeam={member} />
+                
             ))}
-        </div>
+
+    </div>
         </>
     );
 };

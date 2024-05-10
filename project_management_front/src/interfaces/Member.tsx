@@ -9,6 +9,6 @@ export interface Member {
 export interface MemberTeam {
     project_id?: number;
     project_name?: string;
-    members?: Member[]
+    members?: Member[];
 }
 
