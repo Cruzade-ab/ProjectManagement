@@ -23,17 +23,17 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing }) =
 
 
   React.useEffect(() => {
+    console.log('Resetting form with defaultValues:', defaultValues);
     reset(defaultValues);
   }, [defaultValues, reset]);
 
   const onSubmit: SubmitHandler<Project> = async data => {
-    console.log('Form data', data);
+    console.log('Attempting to submit form', data);
 
-    const url = isEditing ? `http://172.16.5.78:5000/api/update_project.${defaultValues.project_id}` : 'http://172.16.5.78:5000/api/new_projects';
+    const url = isEditing ? `http://127.0.0.1:5000/api/update_project/${defaultValues.project_id}` : 'http://127.0.0.1:5000/api/new_project';
     const method = isEditing ? 'POST' : 'POST';
 
-    console.log("Direction Fetch",url)
-
+    console.log('Making API request to:', url);
 
     try {
         const response = await fetch(url, {
@@ -58,8 +58,14 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing }) =
 
   };
 
+  console.log('Form errors:', errors);
+
+
+
   return (
+    <>
     <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
+      <h1>{isEditing ? 'Updating Project' : 'Create Project'}</h1>
     <div className="mb-3">
       <label htmlFor="project_name" className="form-label">Project Name</label>
       <input {...register('project_name')} type="text" className={`form-control ${errors.project_name ? 'is-invalid' : ''}`} id="project_name" />
@@ -78,8 +84,10 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing }) =
       {errors.status && <div className="invalid-feedback">{errors.status.message}</div>}
     </div>
 
-    <button type="submit" className="btn btn-primary">{isEditing ? 'Update' : 'Create'}</button>
+    <input type="submit" className="btn btn-primary" onClick={() => console.log('Submit clicked')}>
+    </input>
   </form>
+  </>
   );
 };
 

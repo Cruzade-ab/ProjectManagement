@@ -31,7 +31,7 @@ const TaskCard: React.FC<TasksProps> = ({ task }) => {
         <p className="card-text"><strong>End date:</strong> {task.end_date}</p>
       </div>
       <div className="col">
-        <p className="card-text"><strong>Member:</strong> {task.start_date}</p>
+        <p className="card-text"><strong>Member:</strong> {task.member_id}</p>
       </div>
       <div className="col-auto">
         <div className="d-flex align-items-center" style={{ marginTop: '-15px' }}>
@@ -44,10 +44,8 @@ const TaskCard: React.FC<TasksProps> = ({ task }) => {
   </div>
   <hr />
 </div>
-
-
-<Modal  isOpen={isModalOpen} onClose={closeModal}>
-        <TaskForm isEditing={true} defaultValues={{task_name: task.task_name, start_date: task.start_date, end_date: task.end_date, project_id: task.task_id}}></TaskForm>
+      <Modal  isOpen={isModalOpen} onClose={closeModal}>
+        <TaskForm isEditing={true} defaultValues={{task_name: task.task_name, start_date: task.start_date, end_date: task.end_date, project_id: task.task_id, member_id: task.member_id}}></TaskForm>
       </Modal>
 </>
 

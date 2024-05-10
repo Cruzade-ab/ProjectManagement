@@ -13,7 +13,6 @@ function App() {
   return (
     <Router>
       <div>
-        {/* You can add a Navbar here if you want */}
         <Routes>
           <Route path="/" element={<ProjectsContainer />} />
           <Route path="/tasks" element={<TasksContainers />} /> 

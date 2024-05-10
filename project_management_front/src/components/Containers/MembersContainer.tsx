@@ -8,7 +8,7 @@ const MembersContainer: React.FC = () => {
     const [members, setMembers] = useState<Member[]>([]); 
 
     useEffect(() => {
-        fetch('http://172.16.5.78:5000/api/get_all_members')
+        fetch('http://127.0.0.1:5000/api/get_all_members')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

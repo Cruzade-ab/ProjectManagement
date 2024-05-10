@@ -8,7 +8,7 @@ const ProjectsContainer: React.FC = () => {
     const [projects, setProjects] = useState<Project[]>([]); 
 
     useEffect(() => {
-        fetch('http://172.16.5.78:5000/api/get_all_projects')
+        fetch('http://127.0.0.1:5000/api/get_all_projects')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
