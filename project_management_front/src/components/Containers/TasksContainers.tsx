@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import TaskCard from '../Cards/tasks/TaskCard';
-import NavbarTask from '../Navbar/TaskNavbar';
 import {Task, ProjectTasks} from '../../interfaces/Task';
 import TasksProject from '../Cards/tasks/TaskProyect';
+import { Project } from '../../interfaces/Project';
 
+interface TasksContainerProps {
+    selectedProject: Project | null;
+}
 
-const TasksContainers: React.FC = () => {
+const TasksContainers: React.FC<TasksContainerProps> = ({selectedProject}) => {
     const [projectTasks, setProjectTasks] = useState<ProjectTasks[]>([]); 
 
     useEffect(() => {
@@ -33,11 +35,11 @@ const TasksContainers: React.FC = () => {
 
     return (
         <>
-        <NavbarTask task={projectTasks} />
-        
         <div>
-            {projectTasks.map(projectTask => (
-                <TasksProject key={projectTask.project_id} projectTask={projectTask} />
+            {projectTasks.filter(task => 
+                selectedProject === null || task.project_id === selectedProject.project_id
+            ).map(filteredTask => (
+                <TasksProject key={filteredTask.project_id} projectTask={filteredTask} />
             ))}
         </div>
         </>

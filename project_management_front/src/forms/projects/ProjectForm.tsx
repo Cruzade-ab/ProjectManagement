@@ -3,7 +3,7 @@ import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { projectSchema } from './SchemaValidation';
-import Project from '../../interfaces/Project';
+import {Project} from '../../interfaces/Project';
 
 interface ProjectFormProps {
   defaultValues: Project;

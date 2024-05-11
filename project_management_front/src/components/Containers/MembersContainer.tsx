@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import MemberCard from '../Cards/member/MemberCard';
-import {MemberTeam }from '../../interfaces/Member';
-import NavbarMember from '../Navbar/MemberNavbar';
+import { Project } from '../../interfaces/Project';
+import { MemberTeam } from '../../interfaces/Member';
 import MemberProject from '../Cards/member/MemberProject';
 
 
-const MembersContainer: React.FC = () => {
-    const [members, setMembers] = useState<MemberTeam[]>([]); 
+interface MembersContainerProps {
+    selectedProject: Project | null;
+}
+
+const MembersContainer: React.FC<MembersContainerProps> = ({ selectedProject }) => {
+    const [members, setMembers] = useState<MemberTeam[]>([]);
 
     useEffect(() => {
         fetch('http://127.0.0.1:5000/api/get_all_members')
@@ -33,15 +36,13 @@ const MembersContainer: React.FC = () => {
 
     return (
         <>
-       <NavbarMember member={members}/>
-        
-        <div>
-            {members.map(member => (
-                <MemberProject key={member.project_id} projectTeam={member} />
-                
-            ))}
-
-    </div>
+            <div>
+                {members.filter(member =>
+                    selectedProject === null || member.project_id === selectedProject.project_id
+                ).map(filteredMember => (
+                    <MemberProject key={filteredMember.project_id} projectTeam={filteredMember} />
+                ))}
+            </div>
         </>
     );
 };

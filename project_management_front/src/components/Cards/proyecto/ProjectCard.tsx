@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Project from '../../../interfaces/Project';
+import {Project }from '../../../interfaces/Project';
 import Modal from '../../Modal/modal';
 import ProjectForm from '../../../forms/projects/ProjectForm';
 import '../css/style.css';

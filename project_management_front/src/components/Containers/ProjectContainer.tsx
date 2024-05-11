@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ProjectCard from '../Cards/proyecto/ProjectCard';
-import Project from '../../interfaces/Project';
-import NavbarProject from '../Navbar/ProjectNavbar';
+import { Project } from '../../interfaces/Project';
 
-const ProjectsContainer: React.FC = () => {
+interface ProjectsContainerProps {
+    selectedProject: Project | null;
+}
+
+const ProjectsContainer: React.FC<ProjectsContainerProps> = ({selectedProject}) => {
    
     const [projects, setProjects] = useState<Project[]>([]); 
 
@@ -32,11 +35,11 @@ const ProjectsContainer: React.FC = () => {
 
     return (
         <>
-        <NavbarProject project={projects}/>
-        
         <div>
-            {projects.map(project => (
-                <ProjectCard key={project.project_id} project={project} />
+            {projects.filter(project => 
+                selectedProject === null || project.project_id === selectedProject.project_id
+            ).map(filteredProject => (
+                <ProjectCard key={filteredProject.project_id} project={filteredProject} />
             ))}
         </div>
         </>
