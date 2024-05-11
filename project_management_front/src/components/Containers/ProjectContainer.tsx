@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import ProjectCard from '../Cards/ProjectCard';
-import Project from '../../interfaces/Project';
-import NavbarProject from '../Navbar/ProjectNavbar';
+import ProjectCard from '../Cards/proyecto/ProjectCard';
+import { Project } from '../../interfaces/Project';
 
-const ProjectsContainer: React.FC = () => {
+interface ProjectsContainerProps {
+    selectedProject: Project | null;
+}
+
+const ProjectsContainer: React.FC<ProjectsContainerProps> = ({selectedProject}) => {
    
     const [projects, setProjects] = useState<Project[]>([]); 
 
     useEffect(() => {
-        fetch('http://172.16.5.78:5000/api/get_all_projects')
+        fetch('http://127.0.0.1:5000/api/get_all_projects')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -32,11 +35,11 @@ const ProjectsContainer: React.FC = () => {
 
     return (
         <>
-        <NavbarProject project={projects}/>
-        
         <div>
-            {projects.map(project => (
-                <ProjectCard key={project.project_id} project={project} />
+            {projects.filter(project => 
+                selectedProject === null || project.project_id === selectedProject.project_id
+            ).map(filteredProject => (
+                <ProjectCard key={filteredProject.project_id} project={filteredProject} />
             ))}
         </div>
         </>

@@ -1,0 +1,25 @@
+.card {
+    padding: 0 15px;
+    margin: 15px 15px 15px 15px;
+}
+
+.card-body {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 16px;
+    color: #6c757d;
+}
+
+.btn {
+    font-size: 14px;
+    border-radius: 5px;
+}

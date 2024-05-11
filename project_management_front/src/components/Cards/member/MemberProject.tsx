@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
-import {ProjectTasks, Task} from "../../../interfaces/Task";
-import TaskCard from "./TaskCard";
+import MemberCard from "./MemberCard";
 import Modal from "../../Modal/modal";
-import TaskForm from "../../../forms/tasks/TaskForm";
+import MemberForm from "../../../forms/members/MemberForm";
 import '../css/style.css';
+import { Member, MemberTeam } from "../../../interfaces/Member";
 
-
-interface ProjectTasksProps {
-  projectTask: ProjectTasks;
+interface ProjectTeamProps {
+  projectTeam: MemberTeam;
   
 }
 
 
-const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask }) => {
-  const [tasks, setTasks] = useState<Task[]>([]); 
+const MemberProject: React.FC<ProjectTeamProps> = ({ projectTeam }) => {
+  const [members, setMembers] = useState<Member[]>([])
   const [isModalOpen, setModalOpen] = useState(false);
 
   const openModal = () => setModalOpen(true);
@@ -21,15 +20,15 @@ const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask }) => {
 
 
   useEffect(() => {
-    setTasks(projectTask.tasks);
-  }, [projectTask.tasks]);
+    setMembers(projectTeam.members || []);
+  }, [projectTeam.members]);
 
   return (
-    <div className="tasks">
+    <div className="members">
     <div className="card mb-4">
         <div className="card-body">
             <div className="d-flex justify-content-between align-items-center">
-                <h5 className="card-title mb-0">{projectTask.project_name}</h5>
+                <h5 className="card-title mb-0">{projectTeam.project_name}</h5>
                 <div>
                     <button className="btn btn-primary px-5" onClick={openModal}>Add</button>
                 </div>
@@ -37,12 +36,12 @@ const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask }) => {
             <hr />
             <br></br>
             <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <TaskForm isEditing={false} defaultValues={{}}></TaskForm>
+                <MemberForm isEditing={false} defaultValues={{}}></MemberForm>
             </Modal>
 
             <div>
-                {tasks.map(task => (
-                    <TaskCard key={task.task_id} task={task} />
+                {members.map(member => (
+                    <MemberCard key={member.member_id} member={member} />
                 ))}
             </div>
         </div>
@@ -51,4 +50,4 @@ const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask }) => {
   );
 };
 
-export default TasksProject
+export default MemberProject

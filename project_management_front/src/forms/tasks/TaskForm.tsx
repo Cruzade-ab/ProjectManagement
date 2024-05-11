@@ -11,6 +11,35 @@ interface TaskFormProps {
 }
 
 const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing }) => {
+
+  //Formating Date 
+
+  const formatDate = (dateString?: string): string => {
+    if (!dateString) return '';
+  
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+  
+    return `${year}-${month}-${day}`; // Format to YYYY-MM-DD
+  };
+
+  
+  const defaultValuesFormatted: Task = {
+    ...defaultValues,
+    start_date: formatDate(defaultValues.start_date),
+    end_date: formatDate(defaultValues.end_date),
+  };
+  
+
+
+
+
+
+
+
+  //
   const {
     register,
     handleSubmit,
@@ -18,18 +47,19 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing }) => {
     formState: { errors }
   } = useForm<Task>({
     resolver: zodResolver(taskSchema),
-    defaultValues
+    defaultValues: defaultValuesFormatted
   });
 
 
   React.useEffect(() => {
-    reset(defaultValues);
+    console.log('Resetting form with defaultValues:', defaultValuesFormatted);
+    reset(defaultValuesFormatted);
   }, [defaultValues, reset]);
 
-  const onSubmit: SubmitHandler<Task> = async data => {
+  const onSubmit: SubmitHandler<Task> = async (data: Task) => {
     console.log('Form data', data);
 
-    const url = isEditing ? `http://172.16.5.78:5000/projects/${defaultValues.project_id}` : 'http://172.16.5.78:5000/api';
+    const url = isEditing ? `http://127.0.0.1:5000/api/update_task/${defaultValues.task_id}` : `http://127.0.0.1:5000/api/new_task/${defaultValues.project_id}/${defaultValues.member_id}`;
     const method = isEditing ? 'PUT' : 'POST';
 
 
@@ -56,16 +86,47 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing }) => {
 
   };
 
+  console.log('Form errors:', errors);
+
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Project Name</label>
-      <input {...register('task_name')} />
-      {errors.task_name && <p>{errors.task_name.message}</p>}
+<form onSubmit={handleSubmit(onSubmit)} className="mt-4">
+  <h1>{isEditing ? 'Updating Task' : 'Create Tasks'}</h1>
+  <div className="mb-3">
+    <label htmlFor="task_name" className="form-label">Task Name</label>
+    <input {...register('task_name')} type="text" className={`form-control ${errors.task_name ? 'is-invalid' : ''}`} id="task_name" />
+    {errors.task_name && <div className="invalid-feedback">{errors.task_name.message}</div>}
+  </div>
 
-     {/* Agregar los otros field para llenar los tasks */}
+  <div className="mb-3">
+    <label htmlFor="start_date" className="form-label">Start Date</label>
+    <input {...register('start_date')} type="date" className={`form-control ${errors.start_date ? 'is-invalid' : ''}`} />
+    {errors.start_date && <div className="invalid-feedback">{errors.start_date.message}</div>}
+  </div>
 
-      <button type="submit">{isEditing ? 'Update' : 'Create'}</button>
-    </form>
+  <div className="mb-3">
+    <label htmlFor="end_date" className="form-label">End Date</label>
+    <input {...register('end_date')} type="date" className={`form-control ${errors.end_date ? 'is-invalid' : ''}`} id="end_date" />
+    {errors.end_date && <div className="invalid-feedback">{errors.end_date.message}</div>}
+  </div>
+
+  <div className="mb-3">
+    <label htmlFor="project_id" className="form-label">Project Id</label>
+    <input {...register('project_id')} type="text" className={`form-control ${errors.project_id ? 'is-invalid' : ''}`} id="project_id" />
+    {errors.project_id && <div className="invalid-feedback">{errors.project_id.message}</div>}
+  </div> 
+{/* <div className="mb-3">
+    <label htmlFor="member_id" className="form-label">Member Id</label>
+    <input {...register('member_id')} type="text" className={`form-control ${errors.member_id ? 'is-invalid' : ''}`} id="member_id" />
+    {errors.member_id && <div className="invalid-feedback">{errors.member_id.message}</div>}
+  </div> */}
+
+  <input type="submit" className="btn btn-primary" onClick={() => console.log('Submit clicked')}>
+  </input>
+</form>
+
+  
+
   );
 };
 
