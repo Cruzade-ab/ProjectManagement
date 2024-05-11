@@ -2,26 +2,41 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { taskSchema } from './SchemaValidation';
+import { memberSchema } from './SchemaValidation';
 import { Member } from '../../interfaces/Member';
 import { useNavigate } from 'react-router-dom';
 
 interface MemberFormProps {
-  defaultValues: Member;
+  defaultValues:  {
+    member?: Member;
+    project_id?: number;
+  };
   isEditing: boolean;
   onSubmitSuccess: () => void;
 }
 
 const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSubmitSuccess}) => {
   const navigate = useNavigate()
+
+
+  interface FormValues extends Member{
+    project_id?: number;
+  }
+
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm<Member>({
-    resolver: zodResolver(taskSchema),
-    defaultValues
+  } = useForm<FormValues>({
+    resolver: zodResolver(memberSchema),
+    defaultValues: {
+      member_name: defaultValues.member?.member_name,
+      role: defaultValues.member?.role,
+      project_id: defaultValues.project_id,
+      member_id: defaultValues.member?.member_id
+    }
   });
 
 
@@ -33,7 +48,7 @@ const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSu
   const onSubmit: SubmitHandler<Member> = async data => {
     console.log('Form data', data);
 
-    const url = isEditing ? `http://127.0.0.1:5000/api/update_member/${defaultValues.member_id}` : `http://127.0.0.1:5000/api/new_member/${defaultValues.project_id}`;
+    const url = isEditing ? `http://127.0.0.1:5000/api/update_member/${defaultValues.member?.member_id}` : `http://127.0.0.1:5000/api/add_members/${defaultValues.project_id}`;
     const method = isEditing ? 'PUT' : 'POST';
 
 
@@ -70,11 +85,8 @@ const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSu
 <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
   <h1>{isEditing ? 'Updating Member' : 'Create Member'}</h1>
 
-  <div className="mb-3">
-    <label htmlFor="project_id" className="form-label">Project Id</label>
-    <input {...register('project_id')} type="text" className={`form-control ${errors.project_id ? 'is-invalid' : ''}`} id="project_id" />
-    {errors.project_id && <div className="invalid-feedback">{errors.project_id.message}</div>}
-  </div> 
+  <input type="hidden" {...register('project_id')} />
+
   <div className="mb-3">
     <label htmlFor="member_name" className="form-label">Member Name</label>
     <input {...register('member_name')} type="text" className={`form-control ${errors.member_name ? 'is-invalid' : ''}`} id="member_name" />

@@ -16,7 +16,6 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
   const navigate = useNavigate()
   
   const [isModalOpen, setModalOpen] = useState(false);
-
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
 
@@ -99,20 +98,20 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
   </div>
   <hr />
 </div>
-      <Modal  isOpen={isModalOpen} onClose={closeModal}>
-        <TaskForm isEditing={true} 
-         defaultValues={{
-          task: {
-            task_name: task.task_name,
-            start_date: task.start_date,
-            end_date: task.end_date,
-            task_id: task.task_id,
-            member_id: task.member_id,
-          },
-          project_id: project_id
-        }}
-          onSubmitSuccess={closeModal}></TaskForm>
-      </Modal>
+<Modal  isOpen={isModalOpen} onClose={closeModal}>
+  <TaskForm isEditing={true} 
+    defaultValues={{
+    task: {
+      task_name: task.task_name,
+      start_date: task.start_date,
+      end_date: task.end_date,
+      task_id: task.task_id,
+      member_id: task.member_id,
+    },
+    project_id: project_id
+  }}
+    onSubmitSuccess={closeModal}></TaskForm>
+</Modal>
 </>
 
   );

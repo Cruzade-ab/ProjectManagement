@@ -10,11 +10,10 @@ import { Project } from "../../../interfaces/Project";
 
 interface ProjectTasksProps {
   projectTask: ProjectTasks;
-  selectedProject: Project | null;
 }
 
 
-const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask, selectedProject}) => {
+const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask}) => {
   const [tasks, setTasks] = useState<Task[]>([]); 
   const [isModalOpen, setModalOpen] = useState(false);
 

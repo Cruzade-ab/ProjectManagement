@@ -36,12 +36,12 @@ const MemberProject: React.FC<ProjectTeamProps> = ({ projectTeam }) => {
             <hr />
             <br></br>
             <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <MemberForm isEditing={false} defaultValues={{}} onSubmitSuccess={closeModal}></MemberForm>
+                <MemberForm isEditing={false} defaultValues={{project_id:projectTeam.project_id}} onSubmitSuccess={closeModal}></MemberForm>
             </Modal>
 
             <div>
                 {members.map(member => (
-                    <MemberCard key={member.member_id} member={member} />
+                    <MemberCard key={member.member_id} member={member}  project_id={projectTeam.project_id}/>
                 ))}
             </div>
         </div>
