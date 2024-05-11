@@ -39,7 +39,7 @@ const TasksContainers: React.FC<TasksContainerProps> = ({selectedProject}) => {
             {projectTasks.filter(task => 
                 selectedProject === null || task.project_id === selectedProject.project_id
             ).map(filteredTask => (
-                <TasksProject key={filteredTask.project_id} projectTask={filteredTask} />
+                <TasksProject key={filteredTask.project_id} projectTask={filteredTask} selectedProject={selectedProject} />
             ))}
         </div>
         </>

@@ -44,6 +44,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
       console.error('Failed to delete project:', error);
     }
   }
+  
 
 
   return (

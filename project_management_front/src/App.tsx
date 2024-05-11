@@ -46,7 +46,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ProjectsContainer selectedProject={selectedProject}/>} />
           <Route path="/tasks" element={<TasksContainers selectedProject={selectedProject}/>} /> 
-          <Route path="/members" element={<MembersContainer selectedProject={selectedProject}/>} />
+          <Route path="/members" element={<MembersContainer selectedProject={selectedProject} />} />
         </Routes>
       </div>
     </Router>

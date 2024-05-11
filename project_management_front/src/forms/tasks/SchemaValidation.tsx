@@ -2,10 +2,14 @@ import { z } from 'zod';
 
 
 const taskSchema = z.object({
-  id: z.number().optional(),
-  project_name: z.string().min(1, "Project name is required"),
-  description: z.string().min(100, "Description should be at least 100 characters long"),
-  status: z.string().min(1, "Status is required")
+  task_name: z.string().min(1, { message: "Task name is required." }),
+  project_id: z.number().min(1, { message: "Task name is required." }),
+  member_id: z.string().min(1, { message: "Member od is required." }),
+  start_date: z.string()
+    .optional(),
+  end_date: z.string()
+    .optional()
 });
+
 
 export { taskSchema };

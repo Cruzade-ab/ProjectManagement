@@ -4,15 +4,17 @@ import TaskCard from "./TaskCard";
 import Modal from "../../Modal/modal";
 import TaskForm from "../../../forms/tasks/TaskForm";
 import '../css/style.css';
+import { Project } from "../../../interfaces/Project";
+
 
 
 interface ProjectTasksProps {
   projectTask: ProjectTasks;
-  
+  selectedProject: Project | null;
 }
 
 
-const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask }) => {
+const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask, selectedProject}) => {
   const [tasks, setTasks] = useState<Task[]>([]); 
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -37,12 +39,12 @@ const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask }) => {
             <hr />
             <br></br>
             <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <TaskForm isEditing={false} defaultValues={{}} onSubmitSuccess={closeModal}></TaskForm>
+                <TaskForm isEditing={false} defaultValues={{project_id: projectTask.project_id}} onSubmitSuccess={closeModal}></TaskForm>
             </Modal>
 
             <div>
                 {tasks.map(task => (
-                    <TaskCard key={task.task_id} task={task}/>
+                    <TaskCard key={task.task_id} task={task}  project_id={projectTask.project_id} />
                 ))}
             </div>
         </div>

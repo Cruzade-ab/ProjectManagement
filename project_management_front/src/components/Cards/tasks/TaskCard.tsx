@@ -3,22 +3,55 @@ import {Task} from "../../../interfaces/Task";
 import Modal from "../../Modal/modal";
 import TaskForm from "../../../forms/tasks/TaskForm";
 import '../css/style.css';
+import { useNavigate } from "react-router-dom";
 
 interface TasksProps {
   task: Task;
-  
+  project_id?: number | undefined;
 }
 
 
-const TaskCard: React.FC<TasksProps> = ({ task }) => {
+const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
+  console.log("The task ", task.task_name, "of projecft", project_id)
+  const navigate = useNavigate()
+  
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
-  console.log("Task: ", task.task_name)
-  console.log("Start date is ", task.start_date, typeof(task.start_date))
-  console.log("End date is ", task.end_date, typeof(task.end_date))
+
+  const openDeleteModal = () => setDeleteModalOpen(true);
+  const closeDeleteModal = () => setDeleteModalOpen(false);
+
+  const handleDelete = async () => {
+    const url = `http://127.0.0.1:5000/api/delete_task/${task.task_id}`
+
+    try {
+      const response = await fetch (url,{
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+
+      if(response.ok){
+        console.log('Success deleting Task')
+        navigate('/blank');
+        navigate(-1)
+      }else{
+        console.log('Error deleting Task')
+      }
+
+    } catch (error) {
+      console.error('Failed to delete project:', error);
+    }
+  }
+
+  console.log("Project ID before passing to TaskForm:", project_id);
 
 
   return (
@@ -41,8 +74,25 @@ const TaskCard: React.FC<TasksProps> = ({ task }) => {
       <div className="col-auto">
         <div className="d-flex align-items-center" style={{ marginTop: '-15px' }}>
         <button className="btn btn-primary" style={{ marginRight: '15px' }} onClick={openModal}><i className="fas fa-edit"></i></button>
+        
 
-          <button className="btn btn-danger"><i className="fas fa-trash"></i></button>
+        <button className="btn btn-danger" onClick={openDeleteModal}><i className="fas fa-trash"></i></button>
+        <Modal isOpen={isDeleteModalOpen} onClose={closeDeleteModal}>
+            <div>
+              <h1>
+                Delete Task
+              </h1>
+              <p>
+                Are you sure to delete the task {task.task_name}, by the member {task.member_name}
+              </p>
+              <button onClick={handleDelete}>
+                yes
+              </button>
+              <button onClick={closeDeleteModal}>
+                no
+              </button>
+            </div>
+        </Modal>
         </div>
       </div>
     </div>
@@ -50,7 +100,18 @@ const TaskCard: React.FC<TasksProps> = ({ task }) => {
   <hr />
 </div>
       <Modal  isOpen={isModalOpen} onClose={closeModal}>
-        <TaskForm isEditing={true} defaultValues={{task_name: task.task_name, start_date: task.start_date, end_date: task.end_date, project_id: task.task_id, member_id: task.member_id}} onSubmitSuccess={closeModal}></TaskForm>
+        <TaskForm isEditing={true} 
+         defaultValues={{
+          task: {
+            task_name: task.task_name,
+            start_date: task.start_date,
+            end_date: task.end_date,
+            task_id: task.task_id,
+            member_id: task.member_id,
+          },
+          project_id: project_id
+        }}
+          onSubmitSuccess={closeModal}></TaskForm>
       </Modal>
 </>
 

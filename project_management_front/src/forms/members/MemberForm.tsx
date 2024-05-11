@@ -75,10 +75,15 @@ const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSu
     <input {...register('project_id')} type="text" className={`form-control ${errors.project_id ? 'is-invalid' : ''}`} id="project_id" />
     {errors.project_id && <div className="invalid-feedback">{errors.project_id.message}</div>}
   </div> 
-<div className="mb-3">
-    <label htmlFor="member_id" className="form-label">Member Id</label>
-    <input {...register('member_id')} type="text" className={`form-control ${errors.member_id ? 'is-invalid' : ''}`} id="member_id" />
-    {errors.member_id && <div className="invalid-feedback">{errors.member_id.message}</div>}
+  <div className="mb-3">
+    <label htmlFor="member_name" className="form-label">Member Name</label>
+    <input {...register('member_name')} type="text" className={`form-control ${errors.member_name ? 'is-invalid' : ''}`} id="member_name" />
+    {errors.member_name && <div className="invalid-feedback">{errors.member_name.message}</div>}
+  </div> 
+  <div className="mb-3">
+    <label htmlFor="role" className="form-label">Role</label>
+    <input {...register('role')} type="text" className={`form-control ${errors.role ? 'is-invalid' : ''}`} id="role" />
+    {errors.role && <div className="invalid-feedback">{errors.role.message}</div>}
   </div>
 
   <input type="submit" className="btn btn-primary" onClick={() => console.log('Submit clicked')}>

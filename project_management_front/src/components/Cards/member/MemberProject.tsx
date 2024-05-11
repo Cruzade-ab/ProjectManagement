@@ -5,9 +5,9 @@ import MemberForm from "../../../forms/members/MemberForm";
 import '../css/style.css';
 import { Member, MemberTeam } from "../../../interfaces/Member";
 
+
 interface ProjectTeamProps {
   projectTeam: MemberTeam;
-  
 }
 
 

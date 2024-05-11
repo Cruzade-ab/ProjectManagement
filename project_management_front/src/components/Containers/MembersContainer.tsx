@@ -6,6 +6,7 @@ import MemberProject from '../Cards/member/MemberProject';
 
 interface MembersContainerProps {
     selectedProject: Project | null;
+   
 }
 
 const MembersContainer: React.FC<MembersContainerProps> = ({ selectedProject }) => {
@@ -40,7 +41,7 @@ const MembersContainer: React.FC<MembersContainerProps> = ({ selectedProject }) 
                 {members.filter(member =>
                     selectedProject === null || member.project_id === selectedProject.project_id
                 ).map(filteredMember => (
-                    <MemberProject key={filteredMember.project_id} projectTeam={filteredMember} />
+                    <MemberProject key={filteredMember.project_id} projectTeam={filteredMember}/>
                 ))}
             </div>
         </>
