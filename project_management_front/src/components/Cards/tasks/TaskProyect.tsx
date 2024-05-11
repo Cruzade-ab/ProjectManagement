@@ -37,12 +37,12 @@ const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask }) => {
             <hr />
             <br></br>
             <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <TaskForm isEditing={false} defaultValues={{}}></TaskForm>
+                <TaskForm isEditing={false} defaultValues={{}} onSubmitSuccess={closeModal}></TaskForm>
             </Modal>
 
             <div>
                 {tasks.map(task => (
-                    <TaskCard key={task.task_id} task={task} />
+                    <TaskCard key={task.task_id} task={task}/>
                 ))}
             </div>
         </div>

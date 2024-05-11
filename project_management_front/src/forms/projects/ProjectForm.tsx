@@ -4,13 +4,17 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { projectSchema } from './SchemaValidation';
 import {Project} from '../../interfaces/Project';
-
+import { useNavigate} from 'react-router-dom';
 interface ProjectFormProps {
   defaultValues: Project;
   isEditing: boolean;
+  onSubmitSuccess: () => void; // Call Back
 }
 
-const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing }) => {
+const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing , onSubmitSuccess}) => {
+  const navigate = useNavigate()
+
+
   const {
     register,
     handleSubmit,
@@ -48,6 +52,9 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing }) =
 
         const api_response = await response.json();  
         console.log('Success:', api_response);
+        onSubmitSuccess();
+        navigate('/blank');
+        navigate(-1);
 
     } catch (error) {
         console.error('Error:', error);

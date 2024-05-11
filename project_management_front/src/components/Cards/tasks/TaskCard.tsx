@@ -50,7 +50,7 @@ const TaskCard: React.FC<TasksProps> = ({ task }) => {
   <hr />
 </div>
       <Modal  isOpen={isModalOpen} onClose={closeModal}>
-        <TaskForm isEditing={true} defaultValues={{task_name: task.task_name, start_date: task.start_date, end_date: task.end_date, project_id: task.task_id, member_id: task.member_id}}></TaskForm>
+        <TaskForm isEditing={true} defaultValues={{task_name: task.task_name, start_date: task.start_date, end_date: task.end_date, project_id: task.task_id, member_id: task.member_id}} onSubmitSuccess={closeModal}></TaskForm>
       </Modal>
 </>
 

@@ -4,13 +4,15 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { taskSchema } from './SchemaValidation';
 import {Task }from '../../interfaces/Task';
+import { useNavigate } from 'react-router-dom';
 
 interface TaskFormProps {
   defaultValues: Task;
   isEditing: boolean;
+  onSubmitSuccess: () => void;
 }
 
-const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing }) => {
+const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing, onSubmitSuccess }) => {
 
   //Formating Date 
 
@@ -31,6 +33,8 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing }) => {
     start_date: formatDate(defaultValues.start_date),
     end_date: formatDate(defaultValues.end_date),
   };
+
+  const navigate = useNavigate()
   
 
 
@@ -76,6 +80,9 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing }) => {
 
         const api_response = await response.json();  
         console.log('Success:', api_response);
+        onSubmitSuccess();
+        navigate('blank');
+        navigate(-1)
 
     } catch (error) {
         console.error('Error:', error);

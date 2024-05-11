@@ -4,16 +4,21 @@ import Modal from '../../Modal/modal';
 import ProjectForm from '../../../forms/projects/ProjectForm';
 import '../css/style.css';
 import { json } from 'stream/consumers';
+import { useNavigate } from 'react-router-dom';
 interface ProjectProps {
   project: Project;
 }
 
 const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
-
   const [isModalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate()
 
   const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+  const closeModal = () => {
+    setModalOpen(false);
+  }
+    
+   
 
 
   const handleDelete = async () => {
@@ -29,6 +34,8 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
 
       if(response.ok){
         console.log('Success deleting Project')
+        navigate('/blank');
+        navigate(-1)
       }else{
         console.log('Error deleting Project')
       }
@@ -56,7 +63,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
         <p className="card-text">Status: {project.status}</p>
 
         <Modal  isOpen={isModalOpen} onClose={closeModal}>
-        <ProjectForm isEditing={true} defaultValues={{project_name: project.project_name, description: project.description, status: project.status, project_id: project.project_id}}></ProjectForm>
+        <ProjectForm isEditing={true} defaultValues={{project_name: project.project_name, description: project.description, status: project.status, project_id: project.project_id}} onSubmitSuccess={closeModal} ></ProjectForm>
         </Modal>
     </div>
 </div>

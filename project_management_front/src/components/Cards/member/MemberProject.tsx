@@ -36,7 +36,7 @@ const MemberProject: React.FC<ProjectTeamProps> = ({ projectTeam }) => {
             <hr />
             <br></br>
             <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <MemberForm isEditing={false} defaultValues={{}}></MemberForm>
+                <MemberForm isEditing={false} defaultValues={{}} onSubmitSuccess={closeModal}></MemberForm>
             </Modal>
 
             <div>

@@ -4,13 +4,16 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { taskSchema } from './SchemaValidation';
 import { Member } from '../../interfaces/Member';
+import { useNavigate } from 'react-router-dom';
 
 interface MemberFormProps {
   defaultValues: Member;
   isEditing: boolean;
+  onSubmitSuccess: () => void;
 }
 
-const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing }) => {
+const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSubmitSuccess}) => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -47,6 +50,9 @@ const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing }) => 
 
         const api_response = await response.json();  
         console.log('Success:', api_response);
+        onSubmitSuccess();
+        navigate('/blank');
+        navigate(-1);
 
     } catch (error) {
         console.error('Error:', error);
