@@ -3,6 +3,7 @@ import {Member} from "../../../interfaces/Member";
 import { useNavigate } from "react-router-dom";
 import Modal from "../../Modal/modal";
 import MemberForm from "../../../forms/members/MemberForm";
+import ErrorModal from "../../Modal/ErrorModal";
 
 interface MembersProps {
   member: Member;
@@ -13,24 +14,25 @@ interface MembersProps {
 
 const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
   const navigate = useNavigate()
-  
+
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
 
-  const openEditModal = () => {
-    console.log("Opening Edit Modal");
-    setEditModalOpen(true);
-  };
-  
-  const closeModal = () => setEditModalOpen(false);
-
+  const openEditModal = () => setEditModalOpen(true);
+  const handleCloseEditModal = () => setEditModalOpen(false);
 
   const openDeleteModal = () => setDeleteModalOpen(true);
-  const closeDeleteModal = () => setDeleteModalOpen(false);
+  const handleCloseDeleteModal = () => setDeleteModalOpen(false);
+
+  const handleCloseErrorModal = () => setIsErrorModalOpen(false);
+
 
   const handleDelete = async () => {
     const url = `http://127.0.0.1:5000/api/delete_member/${member.member_id}`
+    setDeleteModalOpen(false)
 
     try {
       const response = await fetch (url,{
@@ -40,16 +42,27 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
         }
       })
 
+      const data = await response.json();
+
       if(response.ok){
         console.log('Success deleting Member')
         navigate('/blank');
         navigate(-1)
       }else{
         console.log('Error deleting Member')
+        setErrorMessage(data.error);
+        setIsErrorModalOpen(true);
       }
 
     } catch (error) {
-      console.error('Failed to delete project:', error);
+      console.error('Failed to delete member:', error);
+
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage('An unexpected error occurred');
+      }
+      setIsErrorModalOpen(true);
     }
   }
 
@@ -69,7 +82,7 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
       <div className="col-auto">
         <div className="d-flex align-items-center" style={{ marginTop: '-15px' }}>
         <button className="btn btn-primary" style={{ marginRight: '15px' }} onClick={openEditModal}><i className="fas fa-edit"></i></button>
-        <Modal  isOpen={isEditModalOpen} onClose={closeModal}>
+        <Modal  isOpen={isEditModalOpen} onClose={handleCloseEditModal}>
         <MemberForm isEditing={true} 
             defaultValues={{
               member: {
@@ -79,12 +92,12 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
               },
               project_id: project_id
         }}
-          onSubmitSuccess={closeModal}></MemberForm>
+          onSubmitSuccess={handleCloseDeleteModal} />
       </Modal>
         
 
         <button className="btn btn-danger" onClick={openDeleteModal}><i className="fas fa-trash"></i></button>
-        <Modal isOpen={isDeleteModalOpen} onClose={closeDeleteModal}>
+        <Modal isOpen={isDeleteModalOpen} onClose={handleCloseDeleteModal}>
             <div>
               <h1>
                 Delete Member
@@ -92,20 +105,23 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
               <p>
                 Are you sure to delete the member {member.member_name}?
               </p>
-              <button onClick={handleDelete}>
+              <button onClick={(handleDelete)}>
                 yes
               </button>
-              <button onClick={closeDeleteModal}>
+              <button onClick={handleCloseDeleteModal}>
                 no
               </button>
             </div>
         </Modal>
+      
         </div>
       </div>
     </div>
   </div>
   <hr />
 </div>
+
+<ErrorModal errorMessage={errorMessage} isOpen={isErrorModalOpen} onClose={handleCloseErrorModal} />
 
 </>
   );
