@@ -55,27 +55,33 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
 
   return (
     <>
-<div className="row mb-4 w-100">
-  <div className="col">
-    <div className="row align-items-center">
-      <div className="col">
-        <p className="card-text"><strong></strong> {task.task_name}</p>
-      </div>
-      <div className="col">
-        <p className="card-text"><strong>Start date:</strong> {task.start_date}</p>
-      </div>
-      <div className="col">
-        <p className="card-text"><strong>End date:</strong> {task.end_date}</p>
-      </div>
-      <div className="col">
-        <p className="card-text"><strong>Member:</strong> {task.member_id}</p>
-      </div>
-      <div className="col-auto">
-        <div className="d-flex align-items-center" style={{ marginTop: '-15px' }}>
-        <button className="btn btn-primary" style={{ marginRight: '15px' }} onClick={openModal}><i className="fas fa-edit"></i></button>
+<div className="card-body">
+  <div className="row mb-4 align-items-start">
+    <div className="col-md-2">
+      <p className="card-text"><strong>Name:</strong> {task.task_name}</p>
+    </div>
+    <div className="col-md-2">
+      <p className="card-text"><strong>Start Date:</strong> {task.start_date}</p>
+    </div>
+    <div className="col-md-2">
+      <p className="card-text"><strong>End Date:</strong> {task.end_date}</p>
+    </div>
+    <div className="col-md-2">
+      <p className="card-text"><strong>Member Id:</strong> {task.member_id}</p>
+    </div>
+    <div className="col-md-4">
+      <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button className="btn btn-primary me-md-2 mb-2 mb-md-0" onClick={openModal}>
+          <i className="fas fa-edit"></i> Edit
+        </button>
+        <button className="btn btn-danger" onClick={openDeleteModal}>
+          <i className="fas fa-trash"></i> Delete
+        </button>
+
+
+
         
 
-        <button className="btn btn-danger" onClick={openDeleteModal}><i className="fas fa-trash"></i></button>
 <Modal isOpen={isDeleteModalOpen} onClose={closeDeleteModal}>
   <div className="d-flex justify-content-center">
     <div style={{ backgroundColor: 'white', padding: '20px' }}>
@@ -95,9 +101,10 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
         </div>
       </div>
     </div>
-  </div>
-  <hr />
-</div>
+  </div> 
+{/* </div>
+{/* </div> */}
+<hr />
 <Modal isOpen={isModalOpen} onClose={closeModal}>
   <TaskForm 
     isEditing={true} 
