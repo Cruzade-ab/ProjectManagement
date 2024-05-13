@@ -12,7 +12,7 @@ interface TasksProps {
 
 
 const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
-  console.log("The task ", task.task_name, "of projecft", project_id)
+  console.log("The task ", task.task_name, "of project", project_id)
   const navigate = useNavigate()
   
   const [isModalOpen, setModalOpen] = useState(false);
@@ -76,42 +76,46 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
         
 
         <button className="btn btn-danger" onClick={openDeleteModal}><i className="fas fa-trash"></i></button>
-        <Modal isOpen={isDeleteModalOpen} onClose={closeDeleteModal}>
-            <div>
-              <h1>
-                Delete Task
-              </h1>
-              <p>
-                Are you sure to delete the task {task.task_name}, by the member {task.member_name}
-              </p>
-              <button onClick={handleDelete}>
-                yes
-              </button>
-              <button onClick={closeDeleteModal}>
-                no
-              </button>
-            </div>
-        </Modal>
+<Modal isOpen={isDeleteModalOpen} onClose={closeDeleteModal}>
+  <div className="d-flex justify-content-center">
+    <div style={{ backgroundColor: 'white', padding: '20px' }}>
+      <div>
+        <h1>Delete Task</h1>
+        <p>Are you sure to delete the task {task.task_name}, by the member {task.member_name}?</p>
+        <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '10px 20px', fontSize: '1.2rem' }}>
+          <i className="fas fa-trash me-1"></i>Delete
+        </button>
+        <button className="btn btn-secondary btn-lg" onClick={closeDeleteModal} style={{ padding: '10px 20px', fontSize: '1.2rem' }}>
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</Modal>
         </div>
       </div>
     </div>
   </div>
   <hr />
 </div>
-<Modal  isOpen={isModalOpen} onClose={closeModal}>
-  <TaskForm isEditing={true} 
+<Modal isOpen={isModalOpen} onClose={closeModal}>
+  <TaskForm 
+    isEditing={true} 
     defaultValues={{
-    task: {
-      task_name: task.task_name,
-      start_date: task.start_date,
-      end_date: task.end_date,
-      task_id: task.task_id,
-      member_id: task.member_id,
-    },
-    project_id: project_id
-  }}
-    onSubmitSuccess={closeModal}></TaskForm>
+      task: {
+        task_name: task.task_name,
+        start_date: task.start_date,
+        end_date: task.end_date,
+        task_id: task.task_id,
+        member_id: task.member_id,
+      },
+      project_id: project_id
+    }}
+    onSubmitSuccess={closeModal}
+    handleCloseEditModal={closeModal} 
+  />    
 </Modal>
+
 </>
 
   );

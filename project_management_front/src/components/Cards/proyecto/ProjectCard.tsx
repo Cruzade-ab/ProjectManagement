@@ -27,8 +27,11 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
   const handleCloseDeleteModal = () => setDeleteModalOpen(false);
 
   const handleCloseErrorModal = () => setIsErrorModalOpen(false);
-
-   
+  const closeModal = () => {
+    setEditModalOpen(false);
+    setDeleteModalOpen(false);
+  };
+  
 
 
   const handleDelete = async () => { 
@@ -85,7 +88,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
         <p className="card-text">Description: {project.description}</p>
         <p className="card-text">Status: {project.status}</p>
 
-        <Modal  isOpen={isEditModalOpen} onClose={handleCloseEditModal}>
+        <Modal  isOpen={isEditModalOpen} onClose={handleCloseEditModal} >
           <ProjectForm 
             isEditing={true} 
             defaultValues={
@@ -95,26 +98,28 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
                   status: project.status, 
                   project_id: project.project_id
                 }} 
-            onSubmitSuccess={handleCloseDeleteModal} />
+            onSubmitSuccess={handleCloseDeleteModal}
+            handleCloseEditModal={closeModal} />
         </Modal>
 
 
         <Modal isOpen={isDeleteModalOpen} onClose={handleCloseDeleteModal}>
-            <div>
-              <h1>
-                Delete Project
-              </h1>
-              <p>
-                Are you sure to delete the project {project.project_name}?
-              </p>
-              <button onClick={(handleDelete)}>
-                yes
-              </button>
-              <button onClick={handleCloseDeleteModal}>
-                no
-              </button>
-            </div>
-        </Modal>
+  <div className="d-flex justify-content-center">
+    <div style={{ backgroundColor: 'white', padding: '20px' }}>
+      <div>
+        <h1>Delete Project</h1>
+        <p>Are you sure to delete the project {project.project_name}?</p>
+        <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '10px 20px', fontSize: '1.2rem' }}>
+          <i className="fas fa-trash me-1"></i>Delete
+        </button>
+        <button className="btn btn-secondary btn-lg" onClick={handleCloseDeleteModal} style={{ padding: '10px 20px', fontSize: '1.2rem' }}>
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</Modal>
+
 
     </div>
 </div>

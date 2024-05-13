@@ -13,6 +13,7 @@ interface TaskFormProps {
   };
   isEditing: boolean;
   onSubmitSuccess: () => void;
+  handleCloseEditModal: () => void;
 }
 
 interface MemberList {
@@ -20,7 +21,7 @@ interface MemberList {
   member_name: string;
 }
 
-const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing, onSubmitSuccess }) => {
+const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing, onSubmitSuccess, handleCloseEditModal }) => {
   const [members, setMembers] = useState<MemberList[]>([]);
   const { task, project_id } = defaultValues;
   const navigate = useNavigate()
@@ -129,11 +130,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing, onSubmitS
 
   return (
 <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
-  <h1>{isEditing ? 'Updating Task' : 'Create Tasks'}</h1>
-
-  <input type="hidden" {...register('project_id')} />
-
-
+  <h1 className="mb-4 text-center">{isEditing ? 'Edit Task' : 'Create Task'}</h1>
   <div className="mb-3">
     <label htmlFor="task_name" className="form-label">Task Name</label>
     <input {...register('task_name')} type="text" className={`form-control ${errors.task_name ? 'is-invalid' : ''}`} id="task_name" />
@@ -153,18 +150,19 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing, onSubmitS
   </div>
 
   <div className="mb-3">
-        <label htmlFor="member_id">Member</label>
-        <select {...register('member_id')} className={`form-control ${errors.member_id ? 'is-invalid' : ''}`}>
-          <option value="">Select a Member</option>
-          {members.map(member => (
-            <option key={member.member_id} value={member.member_id}>{member.member_name}</option>
-          ))}
-        </select>
-        {errors.member_id && <div className="invalid-feedback">{errors.member_id.message}</div>}
-      </div>
-
-  <input type="submit" className="btn btn-primary" onClick={() => console.log('Submit clicked')}>
-  </input>
+    <label htmlFor="member_id">Member</label>
+    <select {...register('member_id')} className={`form-select ${errors.member_id ? 'is-invalid' : ''}`}>
+      <option value="">Select a Member</option>
+      {members.map(member => (
+        <option key={member.member_id} value={member.member_id}>{member.member_name}</option>
+      ))}
+    </select>
+    {errors.member_id && <div className="invalid-feedback">{errors.member_id.message}</div>}
+  </div>
+  <div className="mt-3">
+    <input type="submit" className="btn btn-primary me-3 btn-lg" onClick={() => console.log('Submit clicked')}></input>
+    <button onClick={handleCloseEditModal} className="btn btn-secondary me-3 btn-lg">Cancel</button>
+  </div>
 </form>
 
   

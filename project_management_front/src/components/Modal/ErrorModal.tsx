@@ -13,11 +13,15 @@ const ErrorModal: React.FC<ErrorModalProps> = ({ errorMessage, isOpen, onClose }
 
   return (
     <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '20px', zIndex: 1000 }}>
-      <div >
-        <p>{errorMessage}</p>
-        <button onClick={onClose}>Close</button>
-      </div>
+  <div style={{ backgroundColor: 'white', padding: '20px' }}>
+    <div>
+      <h4>{errorMessage}</h4>
+      <br></br>
+      <button onClick={onClose} className="btn btn-secondary" style={{ padding: '10px 20px', fontSize: '1.2rem' }}>Close</button>
     </div>
+  </div>
+</div>
+
   );
 };
 

@@ -38,7 +38,7 @@ const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask}) => {
             <hr />
             <br></br>
             <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <TaskForm isEditing={false} defaultValues={{project_id: projectTask.project_id}} onSubmitSuccess={closeModal}></TaskForm>
+                <TaskForm isEditing={false} defaultValues={{project_id: projectTask.project_id}} onSubmitSuccess={closeModal} handleCloseEditModal={closeModal}></TaskForm>
             </Modal>
 
             <div>

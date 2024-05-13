@@ -9,9 +9,10 @@ interface ProjectFormProps {
   defaultValues: Project;
   isEditing: boolean;
   onSubmitSuccess: () => void; // Call Back
+  handleCloseEditModal: () => void;
 }
 
-const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing , onSubmitSuccess}) => {
+const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing , onSubmitSuccess, handleCloseEditModal}) => {
   const navigate = useNavigate()
 
 
@@ -71,33 +72,36 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing , on
 
   return (
     <>
-    <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
-      <h1>{isEditing ? 'Updating Project' : 'Create Project'}</h1>
-    <div className="mb-3">
-      <label htmlFor="project_name" className="form-label">Project Name</label>
-      <input {...register('project_name')} type="text" className={`form-control ${errors.project_name ? 'is-invalid' : ''}`} id="project_name" />
-      {errors.project_name && <div className="invalid-feedback">{errors.project_name.message}</div>}
-    </div>
+  <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
+  <h1 className="mb-4 text-center">{isEditing ? 'Updating Project' : 'Create Project'}</h1>
+  <div className="mb-3">
+    <label htmlFor="project_name" className="form-label">Project Name</label>
+    <input {...register('project_name')} type="text" className={`form-control ${errors.project_name ? 'is-invalid' : ''}`} id="project_name" />
+    {errors.project_name && <div className="invalid-feedback">{errors.project_name.message}</div>}
+  </div>
 
-    <div className="mb-3">
-      <label htmlFor="description" className="form-label">Description</label>
-      <input {...register('description')} type="text" className={`form-control ${errors.description ? 'is-invalid' : ''}`} id="description" />
-      {errors.description && <div className="invalid-feedback">{errors.description.message}</div>}
-    </div>
+  <div className="mb-4">
+    <label htmlFor="description" className="form-label">Description</label>
+    <textarea {...register('description')} className={`form-control ${errors.description ? 'is-invalid' : ''}`} id="description" rows={4}></textarea>
+    {errors.description && <div className="invalid-feedback">{errors.description.message}</div>}
+  </div>
 
-    <div className="mb-3">
-      <label htmlFor="status" className="form-label">Status</label>
-      <select {...register('status')} className={`form-control ${errors.status ? 'is-invalid' : ''}`} id="status">
-        <option value="Completed">Completed</option>
-        <option value="Progress">Progress</option>
-        <option value="Not Started">Not Started</option>
-      </select>
-      {errors.status && <div className="invalid-feedback">{errors.status.message}</div>}
-    </div>
+  <div className="mb-3">
+    <label htmlFor="status" className="form-label">Status</label>
+    <select {...register('status')} className={`form-select ${errors.status ? 'is-invalid' : ''}`} id="status">
+      <option value="Completed">Completed</option>
+      <option value="Progress">Progress</option>
+      <option value="Not Started">Not Started</option>
+    </select>
+    {errors.status && <div className="invalid-feedback">{errors.status.message}</div>}
+  </div>
 
-    <input type="submit" className="btn btn-primary" onClick={() => console.log('Submit clicked')}>
-    </input>
-  </form>
+  <div className="mt-3">
+    <input type="submit" className="btn btn-primary me-3 btn-lg" onClick={() => console.log('Submit clicked')}></input>
+    <button onClick={handleCloseEditModal} className="btn btn-secondary me-3 btn-lg">Cancel</button>
+  </div>
+</form>
+
   </>
   );
 };

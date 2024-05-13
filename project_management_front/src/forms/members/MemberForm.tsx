@@ -13,9 +13,10 @@ interface MemberFormProps {
   };
   isEditing: boolean;
   onSubmitSuccess: () => void;
+  handleCloseEditModal: () => void;
 }
 
-const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSubmitSuccess}) => {
+const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSubmitSuccess, handleCloseEditModal}) => {
   const navigate = useNavigate()
 
 
@@ -82,8 +83,8 @@ const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSu
 
 
   return (
-<form onSubmit={handleSubmit(onSubmit)} className="mt-4">
-  <h1>{isEditing ? 'Updating Member' : 'Create Member'}</h1>
+<form onSubmit={handleSubmit(onSubmit)} className="mt-4 w-100">
+  <h1 className='text-center'>{isEditing ? 'Edit Member' : 'Add Member'}</h1>
 
   <input type="hidden" {...register('project_id')} />
 
@@ -98,8 +99,10 @@ const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSu
     {errors.role && <div className="invalid-feedback">{errors.role.message}</div>}
   </div>
 
-  <input type="submit" className="btn btn-primary" onClick={() => console.log('Submit clicked')}>
-  </input>
+  <div className="mt-3">
+    <input type="submit" className="btn btn-primary me-3 btn-lg" onClick={() => console.log('Submit clicked')}></input>
+    <button onClick={handleCloseEditModal} className="btn btn-secondary me-3 btn-lg">Cancel</button>
+  </div>
 </form>
 
   
