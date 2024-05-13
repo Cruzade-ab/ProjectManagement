@@ -32,7 +32,7 @@ const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask}) => {
             <div className="d-flex justify-content-between align-items-center">
                 <h5 className="card-title mb-0">{projectTask.project_name}</h5>
                 <div>
-                    <button className="btn btn-primary px-5" onClick={openModal}>Add</button>
+                    <button className="btn btn-primary px-5" onClick={openModal}>Add Task</button>
                 </div>
             </div>
             <hr />
