@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+# Project Management Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Project Management Platform is a web-based application designed to facilitate project management tasks efficiently. It enables users to swiftly create projects, add tasks to projects, and effortlessly manage projects, all without requiring user accounts. With its intuitive front-end interface, users can visually interact with their projects, making the management process more engaging and user-friendly.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contribution](#contribution)
+- [Contact](#contact)
+- [License](#license)
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+There is no installation required for the Project Management Platform. Simply access the platform through your preferred web browser by navigating to the URL where it is hosted.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To use the Project Management Platform, follow these steps:
 
-### `npm test`
+1. **Access the Platform:**
+   - Open your web browser.
+   - Navigate to the URL where the platform is hosted.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Navigating the Interface:**
+   - Upon accessing the platform, you will be presented with the homepage.
+   - Use the navigation bar or the homepage links to access different sections of the platform.
 
-### `npm run build`
+3. **Creating a New Project:**
+   - Click on the "New Project" button, usually located in the top menu or on the dashboard.
+   - Enter the required project details in the form that appears and submit it to create your new project.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Adding Tasks to a Project:**
+   - Navigate to the project you want to add tasks to.
+   - Click on "Add Task" within the project’s detail page.
+   - Fill out the task details in the provided form and submit it to add the task to your project.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. **Managing Projects and Tasks:**
+   - Use the dashboard or the projects page to view all your projects.
+   - Click on a project to view its details, including its tasks, status, and options to edit or delete the project or its tasks.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contribution
 
-### `npm run eject`
+Contributions are welcome! If you want to contribute to the front-end of the Project Management Platform, here’s how you can start:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Fork the project repository.
+2. Create a new branch for your feature: `git checkout -b feature/your-feature`.
+3. Commit your changes: `git commit -m 'Add some front-end feature'`.
+4. Push the branch to your fork: `git push origin feature/your-feature`.
+5. Submit a pull request to the original repository.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Contact
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Connect with the team members on LinkedIn:
 
-## Learn More
+- [Genesis Ojeda (Database Specialist)](https://www.linkedin.com/in/g%C3%A9nesis-ojeda-451576302/)
+- [Ramon Valentin (Back-end Developer)](https://www.linkedin.com/in/ramonvalentinrivera)
+- [Abimael Santa (Front-end Developer)](https://www.linkedin.com/in/abimaelsanta/)
+- [Abielmelex (Back-end Developer)](ABIELMELEX)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is not currently licensed. If you'd like to use it, please reach out to us for permission.
+
+Alternatively, you can choose to apply a license in the future by selecting one from [ChooseALicense.com](https://choosealicense.com/).
