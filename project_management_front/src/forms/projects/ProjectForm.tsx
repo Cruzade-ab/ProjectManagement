@@ -9,7 +9,7 @@ interface ProjectFormProps {
   defaultValues: Project;
   isEditing: boolean;
   onSubmitSuccess: () => void; // Call Back
-  handleCloseEditModal: () => void;
+  handleCloseEditModal?: () => void;
 }
 
 const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing , onSubmitSuccess, handleCloseEditModal}) => {
