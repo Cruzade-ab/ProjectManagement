@@ -63,31 +63,49 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id }) => {
 
   return (
     <>
-      <div className="card-body">
-        <div className="row mb-4 align-items-start">
-          <div className="col-md-2">
-            <p className="card-text"><strong>Name:</strong> {task.task_name}</p>
-          </div>
-          <div className="col-md-2">
-            <p className="card-text"><strong>Start Date:</strong> {task.start_date}</p>
-          </div>
-          <div className="col-md-2">
-            <p className="card-text"><strong>End Date:</strong> {task.end_date}</p>
-          </div>
-          <div className="col-md-2">
-            <p className="card-text"><strong>Member Name:</strong> {task.member_name}</p>
+<div className="card-body">
+  <div className="row mb-4 align-items-start">
+    <div className="col-md-2">
+      <p className="card-text text-color-one"><strong>Name:</strong> {task.task_name}</p>
+    </div>
+    <div className="col-md-2">
+      <p className="card-text text-color-one"><strong>Start Date:</strong> {task.start_date}</p>
+    </div>
+    <div className="col-md-2">
+      <p className="card-text text-color-one"><strong>End Date:</strong> {task.end_date}</p>
+    </div>
+    <div className="col-md-2">
+      <p className="card-text text-color-one"><strong>Member Id:</strong> {task.member_id}</p>
+    </div>
+    <div className="col-md-4 mt-3 p-0">
+      <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button className="btn edit-button me-md-2 mb-2 mb-md-0" onClick={openModal}>
+          <i className="fas fa-edit"></i> Edit
+        </button>
+        <button className="btn btn-danger" onClick={openDeleteModal}>
+          <i className="fas fa-trash"></i> Delete
+        </button>
 
-          </div>
-          <div className="col-md-4 mt-3">
-            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button className="btn edit-button me-md-2 mb-2 mb-md-0" onClick={openModal}>
-                <i className="fas fa-edit"></i> Edit
-              </button>
-              <button className="btn btn-danger" onClick={openDeleteModal}>
-                <i className="fas fa-trash"></i> Delete
-              </button>
-            </div>
-          </div>
+
+
+        
+
+<Modal isOpen={isDeleteModalOpen} onClose={closeDeleteModal}>
+  <div className="d-flex justify-content-center">
+    <div style={{ backgroundColor: 'white', padding: '20px' }}>
+      <div>
+        <h1 className="text-color-two">Delete Task</h1>
+        <p className="text-color-two">Are you sure to delete the task {task.task_name}, by the member {task.member_name}?</p>
+        <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
+          <i className="fas fa-trash me-1"></i>Delete
+        </button>
+        <button className="btn btn-secondary btn-lg" onClick={closeDeleteModal} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</Modal>
         </div>
       </div>
       <hr />

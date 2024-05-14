@@ -132,21 +132,21 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing, onSubmitS
 
   return (
 <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
-  <h1 className="mb-4 text-center">{isEditing ? 'Edit Task' : 'Create Task'}</h1>
+  <h1 className="mb-4 text-center text-color-two">{isEditing ? 'Edit Task' : 'Create Task'}</h1>
   <div className="mb-3">
-    <label htmlFor="task_name" className="form-label">Task Name</label>
+    <label htmlFor="task_name" className="form-label text-color-two">Task Name</label>
     <input {...register('task_name')} type="text" className={`form-control ${errors.task_name ? 'is-invalid' : ''}`} id="task_name" />
     {errors.task_name && <div className="invalid-feedback">{errors.task_name.message}</div>}
   </div>
 
   <div className="mb-3">
-    <label htmlFor="start_date" className="form-label">Start Date</label>
+    <label htmlFor="start_date" className="form-label text-color-two">Start Date</label>
     <input {...register('start_date')} type="date" className={`form-control ${errors.start_date ? 'is-invalid' : ''}`} />
     {errors.start_date && <div className="invalid-feedback">{errors.start_date.message}</div>}
   </div>
 
   <div className="mb-3">
-    <label htmlFor="end_date" className="form-label">End Date</label>
+    <label htmlFor="end_date" className="form-label text-color-two">End Date</label>
     <input {...register('end_date')} type="date" className={`form-control ${errors.end_date ? 'is-invalid' : ''}`} id="end_date" />
     {errors.end_date && <div className="invalid-feedback">{errors.end_date.message}</div>}
   </div>
