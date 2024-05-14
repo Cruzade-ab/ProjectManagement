@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Task, ProjectTasks } from '../../interfaces/Task';
-import TasksProject from '../Cards/tasks/TaskProyect';
+import TasksProject from '../Cards/tasks/TaskProject';
 import { Project } from '../../interfaces/Project';
 import ErrorModal from '../Modal/ErrorModal';
 import PlaceholderCard from '../Cards/PlaceHolder';
