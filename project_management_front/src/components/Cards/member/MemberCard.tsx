@@ -68,15 +68,15 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
 
   return (<>
 <div className="card-body">
-  <div className="row mb-4">
+  <div className="row mb-4 ">
     <div className="col-md-3">
-      <p className="card-text"><strong>Name:</strong> {member.member_name}</p>
+      <p className="card-text text-color-one"><strong>Name:</strong> {member.member_name}</p>
     </div>
     <div className="col-md-3">
-      <p className="card-text"><strong>Id:</strong> {member.member_id}</p>
+      <p className="card-text text-color-one"><strong>Id:</strong> {member.member_id}</p>
     </div>
     <div className="col-md-3 mb-2">
-      <p className="card-text"><strong>Role:</strong> {member.role}</p>
+      <p className="card-text text-color-one"><strong>Role:</strong> {member.role}</p>
     </div>
     <div className="col-md-3">
       <div className="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -113,8 +113,8 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
             <div className="d-flex justify-content-center">
               <div style={{ backgroundColor: 'white', padding: '20px' }}>
                 <div>
-                  <h1>Delete Member</h1>
-                  <p>Are you sure to delete the member {member.member_name}?</p>
+                  <h1 className="text-color-two">Delete Member</h1>
+                  <p className="text-color-two">Are you sure to delete the member {member.member_name}?</p>
                   <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
                     <i className="fas fa-trash me-1"></i>Delete
                   </button>

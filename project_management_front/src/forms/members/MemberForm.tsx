@@ -84,17 +84,17 @@ const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSu
 
   return (
 <form onSubmit={handleSubmit(onSubmit)} className="mt-4 w-100">
-  <h1 className='text-center'>{isEditing ? 'Edit Member' : 'Add Member'}</h1>
+  <h1 className='text-center text-color-two'>{isEditing ? 'Edit Member' : 'Add Member'}</h1>
 
   <input type="hidden" {...register('project_id')} />
 
   <div className="mb-3">
-    <label htmlFor="member_name" className="form-label">Member Name</label>
+    <label htmlFor="member_name" className="form-label text-color-two">Member Name</label>
     <input {...register('member_name')} type="text" className={`form-control ${errors.member_name ? 'is-invalid' : ''}`} id="member_name" />
     {errors.member_name && <div className="invalid-feedback">{errors.member_name.message}</div>}
   </div> 
   <div className="mb-3">
-    <label htmlFor="role" className="form-label">Role</label>
+    <label htmlFor="role" className="form-label text-color-two">Role</label>
     <input {...register('role')} type="text" className={`form-control ${errors.role ? 'is-invalid' : ''}`} id="role" />
     {errors.role && <div className="invalid-feedback">{errors.role.message}</div>}
   </div>

@@ -97,8 +97,8 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
     <div className="row">
       <div className="col">
         <hr className="d-none d-md-block" />
-        <p className="card-text mt-3">Description: {project.description}</p>
-        <p className="card-text">Status: {project.status}</p>
+        <p className="card-text mt-3 text-color-one">Description: {project.description}</p>
+        <p className="card-text text-color-one">Status: {project.status}</p>
         <Modal  isOpen={isEditModalOpen} onClose={handleCloseEditModal} >
           <ProjectForm 
             isEditing={true} 
@@ -118,8 +118,8 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
   <div className="d-flex justify-content-center">
     <div style={{ backgroundColor: 'white', padding: '20px' }}>
       <div>
-        <h1>Delete Project</h1>
-        <p>Are you sure to delete the project {project.project_name}?</p>
+        <h1 className='text-color-two'>Delete Project</h1>
+        <p className='text-color-two'>Are you sure to delete the project {project.project_name}?</p>
         <button className="btn btn-danger me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
           <i className="fas fa-trash me-1"></i>Delete
         </button>

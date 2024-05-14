@@ -1,14 +1,15 @@
 .card {
-    padding: 0 15px;
+    /* padding: 0 15px; */
     margin: 15px 15px 15px 15px;
-    background-color: rgb(168, 238, 238);
+    /* background-color:  rgb(74, 124, 124); */
 }
 
 .card-body {
-    background-color: #f8f9fa;
+    /* background-color: #489ff7; */
     border-radius: 5px;
     padding: 20px;
-    background-color: rgb(207, 247, 247);
+    background-color:  rgb(5, 89, 92);
+    color: #f8f9fa; 
 }
 
 .card-title {
@@ -18,7 +19,7 @@
 
 .card-text {
     font-size: 16px;
-    color: #6c757d;
+    color: #b0b8be;
 }
 
 .btn {
@@ -27,28 +28,72 @@
 }
 
 .custom-navbar {
-    background-color: rgb(94, 211, 211) !important;
+    background-color: rgb(46, 48, 48) !important;
+    color: #f8f9fa;
   }
   
-  .text-color {
-    color: rgb(2, 7, 22);
+  .text-color-one {
+    color: rgb(244, 246, 250);
+  }
+
+  .text-color-two {
+    color: rgb(23, 23, 24);
+  }
+
+  .text-color:hover {
+    color: rgb(228, 228, 230); 
+  }
+
+  /*nav bar styles*/
+  .nav-text-color {
+    color: rgb(244, 246, 250) ;
+  }
+
+  .nav-text-color:hover {
+    color: rgb(32, 32, 133); 
   }
 
   .navbar-brand-bold {
     font-weight: bold;
   }
 
+  /*hamburger color*/
+  .navbar-toggler.navbar-hamburger {
+    background-color: #ffffff;
+  }
+  
+  /*In large viewports, it applies this specific width*/
+  @media (min-width: 992px) {
+    .add-project-btn {
+      width: 210px !important;
+    }
+  }
+  
   .add-project-btn {
     background-color: rgb(65, 155, 110); 
     color: white; 
+  }
+  .add-project-btn:hover {
+    background-color: rgb(46, 97, 72); 
+
   }
 
   .add-buttons{
     background-color: rgb(46, 140, 156);
     color: white;
   }
+
+  .add-buttons:hover{
+    background-color: rgb(27, 94, 105);
+  }
+  
   
   .edit-button{
     background-color: rgb(221, 147, 10);
     color: white;
+  }
+
+  .edit-button:hover{
+    background-color: rgb(143, 103, 30);
+
   }
