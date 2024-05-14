@@ -115,10 +115,10 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
                 <div>
                   <h1>Delete Member</h1>
                   <p>Are you sure to delete the member {member.member_name}?</p>
-                  <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '10px 20px', fontSize: '1.2rem' }}>
+                  <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
                     <i className="fas fa-trash me-1"></i>Delete
                   </button>
-                  <button className="btn btn-secondary btn-lg" onClick={handleCloseDeleteModal} style={{ padding: '10px 20px', fontSize: '1.2rem' }}>
+                  <button className="btn btn-secondary btn-lg" onClick={handleCloseDeleteModal} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
                     Cancel
                   </button>
                 </div>

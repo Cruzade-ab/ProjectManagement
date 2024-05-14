@@ -120,10 +120,10 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
       <div>
         <h1>Delete Project</h1>
         <p>Are you sure to delete the project {project.project_name}?</p>
-        <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '10px 20px', fontSize: '1.2rem' }}>
+        <button className="btn btn-danger me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
           <i className="fas fa-trash me-1"></i>Delete
         </button>
-        <button className="btn btn-secondary btn-lg" onClick={handleCloseDeleteModal} style={{ padding: '10px 20px', fontSize: '1.2rem' }}>
+        <button className="btn btn-secondary " onClick={handleCloseDeleteModal} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
           Cancel
         </button>
       </div>

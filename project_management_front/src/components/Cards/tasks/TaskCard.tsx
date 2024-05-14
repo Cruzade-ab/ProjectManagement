@@ -88,10 +88,10 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
       <div>
         <h1>Delete Task</h1>
         <p>Are you sure to delete the task {task.task_name}, by the member {task.member_name}?</p>
-        <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '10px 20px', fontSize: '1.2rem' }}>
+        <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
           <i className="fas fa-trash me-1"></i>Delete
         </button>
-        <button className="btn btn-secondary btn-lg" onClick={closeDeleteModal} style={{ padding: '10px 20px', fontSize: '1.2rem' }}>
+        <button className="btn btn-secondary btn-lg" onClick={closeDeleteModal} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
           Cancel
         </button>
       </div>
