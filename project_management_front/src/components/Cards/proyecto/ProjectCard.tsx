@@ -89,17 +89,16 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
       </div>
     </div>
     <div className="row d-md-none">
-      <div className="col">
+      <div className="col mt-3">
         <button className="btn btn-primary mb-2 w-100" onClick={openEditModal}><i className="fas fa-edit"></i> Edit</button>
-      </div>
-      <div className="col">
         <button className="btn btn-danger w-100" onClick={openDeleteModal}><i className="fas fa-trash"></i> Delete</button>
       </div>
     </div>
-    <hr className="d-none d-md-block" />
-    <p className="card-text">Description: {project.description}</p>
-    <p className="card-text">Status: {project.status}</p>
-
+    <div className="row">
+      <div className="col">
+        <hr className="d-none d-md-block" />
+        <p className="card-text mt-3">Description: {project.description}</p>
+        <p className="card-text">Status: {project.status}</p>
         <Modal  isOpen={isEditModalOpen} onClose={handleCloseEditModal} >
           <ProjectForm 
             isEditing={true} 
@@ -130,9 +129,11 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
       </div>
     </div>
   </div>
+  
 </Modal>
 
-
+</div>
+</div>
     </div>
 </div>
 
