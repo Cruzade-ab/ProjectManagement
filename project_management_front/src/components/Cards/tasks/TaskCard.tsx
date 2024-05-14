@@ -12,7 +12,6 @@ interface TasksProps {
 
 
 const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
-  console.log("The task ", task.task_name, "of project", project_id)
   const navigate = useNavigate()
   
   const [isModalOpen, setModalOpen] = useState(false);
@@ -50,7 +49,6 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
     }
   }
 
-  console.log("Project ID before passing to TaskForm:", project_id);
 
 
   return (
