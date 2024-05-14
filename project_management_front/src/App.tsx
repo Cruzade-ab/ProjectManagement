@@ -1,12 +1,20 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+// Estas importaciones son referentes a Bootstrap y a una libreria de iconos
+
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+// Se importan los Hooks necesarios para la funcionalidad de nuestra aplicacion
+// Con react estamos importando los hooks useEffect y useState
+// 1- useState nos permite manejar los estados de las variables para ser reasignados con alguna data
+// 2- useEffect nos permite 
+
 import ProjectsContainer from './components/Containers/ProjectContainer';
 import MembersContainer from './components/Containers/MembersContainer';
 import TasksContainers from './components/Containers/TasksContainers';
 import Navbar from './components/Navbar/Navbar';
-import React, { useEffect, useState } from 'react';
 import { Project } from './interfaces/Project';
 
 
@@ -44,7 +52,7 @@ function App() {
       <div>
         <Navbar projects={projects} setSelectedProject={setSelectedProject}></Navbar>
         <Routes>
-          <Route path="/" element={<ProjectsContainer selectedProject={selectedProject}/>} />
+          <Route path="/" element={<ProjectsContainer selectedProject={selectedProject} projects={projects}/>} />
           <Route path="/tasks" element={<TasksContainers selectedProject={selectedProject}/>} /> 
           <Route path="/members" element={<MembersContainer selectedProject={selectedProject} />} />
         </Routes>

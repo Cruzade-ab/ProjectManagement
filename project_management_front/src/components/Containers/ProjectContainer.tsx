@@ -4,37 +4,12 @@ import { Project } from '../../interfaces/Project';
 
 interface ProjectsContainerProps {
     selectedProject: Project | null;
+    projects: Project[];
 }
 
-const ProjectsContainer: React.FC<ProjectsContainerProps> = ({selectedProject}) => {
+const ProjectsContainer: React.FC<ProjectsContainerProps> = ({selectedProject,  projects}) => {
    
-    const [projects, setProjects] = useState<Project[]>([]); 
-
-    useEffect(() => {
-        fetch('http://127.0.0.1:5000/api/get_all_projects')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (Array.isArray(data.projects)) {
-                    setProjects(data.projects);
-                    console.log('Projects Fetch: ', data.projects);
-                } else {
-                    console.error("Fetched data is not an array:", data);
-                    setProjects([]);
-                }
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-                setProjects([]);
-            });
-    }, []);
-
     return (
-        <>
         <div className='container-fluid'>
             {projects.filter(project => 
                 selectedProject === null || project.project_id === selectedProject.project_id
@@ -42,7 +17,6 @@ const ProjectsContainer: React.FC<ProjectsContainerProps> = ({selectedProject}) 
                 <ProjectCard key={filteredProject.project_id} project={filteredProject} />
             ))}
         </div>
-        </>
     );
 };
 
