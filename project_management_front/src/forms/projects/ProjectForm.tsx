@@ -92,7 +92,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing , on
     <label htmlFor="status" className="form-label text-color-two">Status</label>
     <select {...register('status')} className={`form-select ${errors.status ? 'is-invalid' : ''}`} id="status">
       <option value="Completed">Completed</option>
-      <option value="Progress">Progress</option>
+      <option value="Progress">In progress</option>
       <option value="Not Started">Not Started</option>
     </select>
     {errors.status && <div className="invalid-feedback">{errors.status.message}</div>}
