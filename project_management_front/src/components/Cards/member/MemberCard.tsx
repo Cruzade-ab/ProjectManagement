@@ -80,7 +80,7 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
     </div>
     <div className="col-md-3">
       <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button className="btn btn-primary me-md-2 mb-2 mb-md-0 " onClick={openEditModal}>
+        <button className="btn edit-button me-md-2 mb-2 mb-md-0 " onClick={openEditModal}>
           <i className="fas fa-edit"></i> Edit
         </button>
         <button className="btn btn-danger " onClick={openDeleteModal}>

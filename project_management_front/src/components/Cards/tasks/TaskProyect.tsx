@@ -33,10 +33,10 @@ const TasksProject: React.FC<ProjectTasksProps> = ({ projectTask}) => {
                 <h5 className="card-title mb-0">{projectTask.project_name}</h5>
                 <div>
                 <div className="d-lg-none">
-  <button className="btn btn-primary" onClick={openModal}> Add Task </button>
+  <button className="btn add-buttons" onClick={openModal}> Add Task </button>
 </div>
 <div className="d-none d-lg-block">
-  <button className="btn btn-primary px-5" onClick={openModal} style={{ width: '190px' }}> Add Task </button>
+  <button className="btn add-buttons px-5" onClick={openModal} style={{ width: '190px' }}> Add Task </button>
 </div>
 
 

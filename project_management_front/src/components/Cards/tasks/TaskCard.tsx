@@ -71,7 +71,7 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
     </div>
     <div className="col-md-4 mt-3">
       <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button className="btn btn-primary me-md-2 mb-2 mb-md-0" onClick={openModal}>
+        <button className="btn edit-button me-md-2 mb-2 mb-md-0" onClick={openModal}>
           <i className="fas fa-edit"></i> Edit
         </button>
         <button className="btn btn-danger" onClick={openDeleteModal}>

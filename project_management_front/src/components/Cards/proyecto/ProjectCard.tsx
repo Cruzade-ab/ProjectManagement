@@ -82,7 +82,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
         <div className="d-flex justify-content-between align-items-center">
           <h5 className="card-title mb-0">{project.project_name}</h5>
           <div className="d-none d-md-block">
-            <button className="btn btn-primary me-2" onClick={openEditModal}><i className="fas fa-edit"></i> Edit</button>
+            <button className="btn edit-button me-2" onClick={openEditModal}><i className="fas fa-edit"></i> Edit</button>
             <button className="btn btn-danger" onClick={openDeleteModal}><i className="fas fa-trash"></i> Delete</button>
           </div>
         </div>
@@ -90,7 +90,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
     </div>
     <div className="row d-md-none">
       <div className="col mt-3">
-        <button className="btn btn-primary mb-2 w-100" onClick={openEditModal}><i className="fas fa-edit"></i> Edit</button>
+        <button className="btn edit-button mb-2 w-100" onClick={openEditModal}><i className="fas fa-edit"></i> Edit</button>
         <button className="btn btn-danger w-100" onClick={openDeleteModal}><i className="fas fa-trash"></i> Delete</button>
       </div>
     </div>

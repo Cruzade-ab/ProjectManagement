@@ -31,10 +31,10 @@ const MemberProject: React.FC<ProjectTeamProps> = ({ projectTeam }) => {
           <h5 className="card-title mb-0">{projectTeam.project_name}</h5>
           <div>
             <div className="d-lg-none">
-              <button className="btn btn-primary" onClick={openModal}> Add Member </button>
+              <button className="btn add-buttons" onClick={openModal}> Add Member </button>
             </div>
             <div className="d-none d-lg-block">
-              <button className="btn btn-primary px-5" onClick={openModal} style={{ width: '190px' }}> Add Member </button>
+              <button className="btn add-buttons px-5" onClick={openModal} style={{ width: '190px' }}> Add Member </button>
             </div>
           </div>
         </div>
