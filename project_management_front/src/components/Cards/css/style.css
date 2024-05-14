@@ -1,0 +1,53 @@
+.card {
+    margin: 15px 15px 15px 15px;
+    background-color: #353535
+}
+
+.card-body {
+    background-color: #F9F9F9;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #F9F9F9;
+}
+
+.card-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 16px;
+    color: #6c757d;
+}
+
+.btn {
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.custom-navbar {
+    background-color: #284B63 !important;
+  }
+  
+  .text-color {
+    color: #FFFFFF;
+  }
+
+  .navbar-brand-bold {
+    font-weight: bold;
+  }
+
+  .add-project-btn {
+    background-color: rgb(65, 155, 110); 
+    color: white; 
+  }
+
+  .add-buttons{
+    background-color: rgb(46, 140, 156);
+    color: white;
+  }
+  
+  .edit-button{
+    background-color: rgb(221, 147, 10);
+    color: white;
+  }
