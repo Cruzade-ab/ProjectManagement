@@ -82,24 +82,23 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
         <div className="d-flex justify-content-between align-items-center">
           <h5 className="card-title mb-0">{project.project_name}</h5>
           <div className="d-none d-md-block">
-            <button className="btn btn-primary me-2" onClick={openEditModal}><i className="fas fa-edit"></i> Edit</button>
+            <button className="btn edit-button me-2" onClick={openEditModal}><i className="fas fa-edit"></i> Edit</button>
             <button className="btn btn-danger" onClick={openDeleteModal}><i className="fas fa-trash"></i> Delete</button>
           </div>
         </div>
       </div>
     </div>
     <div className="row d-md-none">
-      <div className="col">
-        <button className="btn btn-primary mb-2 w-100" onClick={openEditModal}><i className="fas fa-edit"></i> Edit</button>
-      </div>
-      <div className="col">
+      <div className="col mt-3">
+        <button className="btn edit-button mb-2 w-100" onClick={openEditModal}><i className="fas fa-edit"></i> Edit</button>
         <button className="btn btn-danger w-100" onClick={openDeleteModal}><i className="fas fa-trash"></i> Delete</button>
       </div>
     </div>
-    <hr className="d-none d-md-block" />
-    <p className="card-text">Description: {project.description}</p>
-    <p className="card-text">Status: {project.status}</p>
-
+    <div className="row">
+      <div className="col">
+        <hr className="d-none d-md-block" />
+        <p className="card-text mt-3">Description: {project.description}</p>
+        <p className="card-text">Status: {project.status}</p>
         <Modal  isOpen={isEditModalOpen} onClose={handleCloseEditModal} >
           <ProjectForm 
             isEditing={true} 
@@ -121,18 +120,20 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
       <div>
         <h1>Delete Project</h1>
         <p>Are you sure to delete the project {project.project_name}?</p>
-        <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '10px 20px', fontSize: '1.2rem' }}>
+        <button className="btn btn-danger me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
           <i className="fas fa-trash me-1"></i>Delete
         </button>
-        <button className="btn btn-secondary btn-lg" onClick={handleCloseDeleteModal} style={{ padding: '10px 20px', fontSize: '1.2rem' }}>
+        <button className="btn btn-secondary " onClick={handleCloseDeleteModal} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
           Cancel
         </button>
       </div>
     </div>
   </div>
+  
 </Modal>
 
-
+</div>
+</div>
     </div>
 </div>
 

@@ -3,6 +3,8 @@ import { Project, SelectProject } from "../../interfaces/Project"
 import { Link } from "react-router-dom";
 import Modal from "../Modal/modal";
 import ProjectForm from "../../forms/projects/ProjectForm";
+import "../Cards/css/style.css";
+
 
 
 
@@ -33,23 +35,22 @@ const Navbar: React.FC<NavbarPropos> = ({ projects, setSelectedProject }) => {
 
     return (
         <>
-
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <nav className="navbar navbar-expand-lg bg-body-tertiary custom-navbar" >
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">Project Management</Link>
+                    <Link className="navbar-brand text-color navbar-brand-bold" to="/">Project Management</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to="/">Projects</Link>
+                                <Link className="nav-link text-color" aria-current="page" to="/">Projects</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to="/members">Members</Link>
+                                <Link className="nav-link text-color" aria-current="page" to="/members">Members</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to="/tasks">Tasks</Link>
+                                <Link className="nav-link text-color" aria-current="page" to="/tasks">Tasks</Link>
                             </li>
                             <li className="nav-item">
                                 <select className="form-select" onChange={handleProjectSelect} aria-label="Select project">
@@ -60,7 +61,7 @@ const Navbar: React.FC<NavbarPropos> = ({ projects, setSelectedProject }) => {
                                 </select>
                             </li>
                         </ul>
-                        <button className="btn btn-outline-success" onClick={openModal}>Add Project</button>
+                        <button className="btn add-project-btn" onClick={openModal}>Add Project</button>
                         <Modal isOpen={isModalOpen} onClose={closeModal}>
                             <ProjectForm isEditing={false} defaultValues={{ project_name: '', description: '', status: '' }} onSubmitSuccess={closeModal} handleCloseEditModal={closeModal}/>
                         </Modal>

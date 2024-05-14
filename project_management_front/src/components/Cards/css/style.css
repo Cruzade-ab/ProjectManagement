@@ -1,12 +1,14 @@
 .card {
     padding: 0 15px;
     margin: 15px 15px 15px 15px;
+    background-color: rgb(168, 238, 238);
 }
 
 .card-body {
     background-color: #f8f9fa;
     border-radius: 5px;
     padding: 20px;
+    background-color: rgb(207, 247, 247);
 }
 
 .card-title {
@@ -23,3 +25,30 @@
     font-size: 14px;
     border-radius: 5px;
 }
+
+.custom-navbar {
+    background-color: rgb(94, 211, 211) !important;
+  }
+  
+  .text-color {
+    color: rgb(2, 7, 22);
+  }
+
+  .navbar-brand-bold {
+    font-weight: bold;
+  }
+
+  .add-project-btn {
+    background-color: rgb(65, 155, 110); 
+    color: white; 
+  }
+
+  .add-buttons{
+    background-color: rgb(46, 140, 156);
+    color: white;
+  }
+  
+  .edit-button{
+    background-color: rgb(221, 147, 10);
+    color: white;
+  }
