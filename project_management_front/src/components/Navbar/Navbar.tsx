@@ -78,7 +78,7 @@ const Navbar: React.FC<NavbarPropos> = ({ projects, setSelectedProject }) => {
                         </ul>
                         
                         <button className="btn add-project-btn" onClick={openModal}>Add Project</button>
-                        //Si se clickea el boton de Add Project el modal se hace visible y muestra el formulario de Projectos
+                        {/* //Si se clickea el boton de Add Project el modal se hace visible y muestra el formulario de Projectos */}
                         <Modal isOpen={isModalOpen} onClose={closeModal}>
                             <ProjectForm isEditing={false} defaultValues={{ project_name: '', description: '', status: '' }} onSubmitSuccess={closeModal}/>
                             {/* Este Formulario espera varios props ya que puede manejar la logica de editar y crear proyecto, en este caso 
