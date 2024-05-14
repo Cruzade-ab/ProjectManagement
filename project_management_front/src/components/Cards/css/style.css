@@ -1,14 +1,13 @@
 .card {
-    padding: 0 15px;
     margin: 15px 15px 15px 15px;
-    background-color: rgb(168, 238, 238);
+    background-color: #353535
 }
 
 .card-body {
-    background-color: #f8f9fa;
+    background-color: #F9F9F9;
     border-radius: 5px;
     padding: 20px;
-    background-color: rgb(207, 247, 247);
+    background-color: #F9F9F9;
 }
 
 .card-title {
@@ -27,11 +26,11 @@
 }
 
 .custom-navbar {
-    background-color: rgb(94, 211, 211) !important;
+    background-color: #284B63 !important;
   }
   
   .text-color {
-    color: rgb(2, 7, 22);
+    color: #FFFFFF;
   }
 
   .navbar-brand-bold {

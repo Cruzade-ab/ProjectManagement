@@ -61,6 +61,7 @@ const Navbar: React.FC<NavbarPropos> = ({ projects, setSelectedProject }) => {
                                 </select>
                             </li>
                         </ul>
+                        
                         <button className="btn add-project-btn" onClick={openModal}>Add Project</button>
                         <Modal isOpen={isModalOpen} onClose={closeModal}>
                             <ProjectForm isEditing={false} defaultValues={{ project_name: '', description: '', status: '' }} onSubmitSuccess={closeModal} handleCloseEditModal={closeModal}/>

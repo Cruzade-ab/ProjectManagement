@@ -35,7 +35,7 @@ const ProjectsContainer: React.FC<ProjectsContainerProps> = ({selectedProject}) 
 
     return (
         <>
-        <div>
+        <div className='container-fluid'>
             {projects.filter(project => 
                 selectedProject === null || project.project_id === selectedProject.project_id
             ).map(filteredProject => (
