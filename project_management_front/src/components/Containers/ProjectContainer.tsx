@@ -4,45 +4,22 @@ import { Project } from '../../interfaces/Project';
 
 interface ProjectsContainerProps {
     selectedProject: Project | null;
+    projects: Project[];
+    fetchProjects: () => void;
 }
-
-const ProjectsContainer: React.FC<ProjectsContainerProps> = ({selectedProject}) => {
+// Este componente manejara los props de projects y selectedProject que se le pasaran desde 
+// el App.tsx
+const ProjectsContainer: React.FC<ProjectsContainerProps> = ({selectedProject,  projects, fetchProjects}) => {
    
-    const [projects, setProjects] = useState<Project[]>([]); 
-
-    useEffect(() => {
-        fetch('http://127.0.0.1:5000/api/get_all_projects')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (Array.isArray(data.projects)) {
-                    setProjects(data.projects);
-                    console.log('Projects Fetch: ', data.projects);
-                } else {
-                    console.error("Fetched data is not an array:", data);
-                    setProjects([]);
-                }
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-                setProjects([]);
-            });
-    }, []);
-
+    // Devuelve la lista de Projectos
     return (
-        <>
-        <div>
+        <div className='container-fluid'>
             {projects.filter(project => 
                 selectedProject === null || project.project_id === selectedProject.project_id
             ).map(filteredProject => (
-                <ProjectCard key={filteredProject.project_id} project={filteredProject} />
+                <ProjectCard key={filteredProject.project_id} project={filteredProject} fetchProjects={fetchProjects}/>
             ))}
         </div>
-        </>
     );
 };
 

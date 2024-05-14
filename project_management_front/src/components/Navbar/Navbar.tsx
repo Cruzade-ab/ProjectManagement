@@ -1,27 +1,39 @@
 import React, { useState } from "react";
-import { Project, SelectProject } from "../../interfaces/Project"
 import { Link } from "react-router-dom";
+// Se importan los hooks necesarios, Link es un componente similar a la etiqueta ancord pero optimizado
+// Al utilizar Link y navegamos mediante las rutas de react-router-dom nos permite renderizar  solo
+// los elementos de cada ruta. (No el Navbar! ) Manteniendo el estado del proyecto seleccionado.
+
+import "../Cards/css/style.css";
+// Estilos Para el componente Navbar
+
+import { Project} from "../../interfaces/Project"
+// Data Object of Product
+
 import Modal from "../Modal/modal";
 import ProjectForm from "../../forms/projects/ProjectForm";
-import "../Cards/css/style.css";
-
-
-
+// Componente Modal que se le pasa un Formulario como hijo
 
 interface NavbarPropos {
     projects: Project[];
     setSelectedProject: (project: Project | null) => void;
+    fetchProjects: () => void;
 }
-const Navbar: React.FC<NavbarPropos> = ({ projects, setSelectedProject }) => {
+// Se le pasan los props de Project y SelectedProject ya que desde el navbar el usuario va a poder filtrar por un proyecto individual
+
+const Navbar: React.FC<NavbarPropos> = ({ projects, setSelectedProject, fetchProjects }) => {
     const [isModalOpen, setModalOpen] = useState(false);
-
-
     const openModal = () => setModalOpen(true);
     const closeModal = () => setModalOpen(false);
+    // Estado y logica para manejar la visibilidad del modal(Crear Producto)
 
 
+    // Se define una funcion que espera al ChangeEvent del Selection Task
     const handleProjectSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedId = event.target.value;
+        //En el selection tag se muestra las opciones de All y el project name pero el valor esta atado al project_id de ese project Name
+        // Se le asigna el valor del selection a esta variable para manejar la logica 
+        
         if (selectedId === "all") {
             setSelectedProject(null);
         } else {
@@ -30,8 +42,12 @@ const Navbar: React.FC<NavbarPropos> = ({ projects, setSelectedProject }) => {
                 setSelectedProject(selectedProject);
             }
         }
-    };
 
+        //Si el valor es All, no reasigna el estado de SelectedProject en el archivo App.tsx
+        //De seleccionar un projecto y este coincida con un project_id existente en la lista de projectos obtenida de la
+        // Base de datos, asigna el estado de la variable selectedProject al projecto Seleccionado.
+    };
+  
 
     return (
         <>
@@ -64,8 +80,13 @@ const Navbar: React.FC<NavbarPropos> = ({ projects, setSelectedProject }) => {
       <div className="row">
         <div className="col-12">
           <button className="btn add-project-btn w-100" onClick={openModal}>Add Project</button>
+           {/* //Si se clickea el boton de Add Project el modal se hace visible y muestra el formulario de Projectos */}
           <Modal isOpen={isModalOpen} onClose={closeModal}>
-                            <ProjectForm isEditing={false} defaultValues={{ project_name: '', description: '', status: '' }} onSubmitSuccess={closeModal} handleCloseEditModal={closeModal}/>
+                            <ProjectForm isEditing={false} defaultValues={{ project_name: '', description: '', status: '' }} onSubmitSuccess={closeModal} fetchProjects={fetchProjects}/>
+                            {/* Este Formulario espera varios props ya que puede manejar la logica de editar y crear proyecto, en este caso 
+                                ambas props estan desactivadas (de manera logica), Tiene un props la funcion de onSubmitSuccess que cierra el 
+                                modal una vez completado exitosamente el formulario
+                            */}
                         </Modal>
         </div>
       </div>

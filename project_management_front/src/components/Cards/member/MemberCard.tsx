@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from "react";
-import {Member} from "../../../interfaces/Member";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+// Se importan los hooks que se utilizaran en este componente
+
+import {Member} from "../../../interfaces/Member";
+// Interfaz del data object Member
+
 import Modal from "../../Modal/modal";
 import MemberForm from "../../../forms/members/MemberForm";
 import ErrorModal from "../../Modal/ErrorModal";
+// Componentes a utilizar
 
 interface MembersProps {
   member: Member;
   project_id?: number | undefined;
-
 }
+// Se definen el tipado de los props que utilizaria n
 
 
 const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
@@ -130,13 +135,7 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
     </div> 
      </div>
      <hr />
-    {/* </div> */}
-  {/* </div>
-  <hr /> */}
-
-
-
-
+    
 
 
 <ErrorModal errorMessage={errorMessage} isOpen={isErrorModalOpen} onClose={handleCloseErrorModal} />

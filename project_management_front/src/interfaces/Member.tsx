@@ -1,3 +1,4 @@
+// Data Object que representa un Miembro
 export interface Member {
     member_id?: number;
     member_name?: string;
@@ -6,6 +7,7 @@ export interface Member {
 }
 
 
+//Data object que representa el equipo de trabajo de un proyecto 
 export interface MemberTeam {
     project_id?: number;
     project_name?: string;
