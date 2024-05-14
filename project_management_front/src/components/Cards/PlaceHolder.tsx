@@ -1,5 +1,3 @@
-// PlaceholderCard.js
-import React from 'react';
 
 const PlaceholderCard = () => {
   return (

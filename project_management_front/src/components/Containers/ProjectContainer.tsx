@@ -6,9 +6,11 @@ interface ProjectsContainerProps {
     selectedProject: Project | null;
     projects: Project[];
 }
-
+// Este componente manejara los props de projects y selectedProject que se le pasaran desde 
+// el App.tsx
 const ProjectsContainer: React.FC<ProjectsContainerProps> = ({selectedProject,  projects}) => {
    
+    // Devuelve la lista de Projectos
     return (
         <div className='container-fluid'>
             {projects.filter(project => 

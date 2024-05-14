@@ -67,6 +67,7 @@ function App() {
               }
           })
           .catch(error => {
+              console.error('There was a problem with the fetch operation:', error);
               setErrorMessage('There was a problem connecting to the server');
               setIsErrorModalOpen(true);
               setProjects([]);

@@ -11,7 +11,7 @@ interface ProjectTeamProps {
 }
 
 
-const MemberProject: React.FC<ProjectTeamProps> = ({ projectTeam }) => {
+const ProjectTeam: React.FC<ProjectTeamProps> = ({ projectTeam }) => {
   const [members, setMembers] = useState<Member[]>([])
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -56,4 +56,4 @@ const MemberProject: React.FC<ProjectTeamProps> = ({ projectTeam }) => {
   );
 };
 
-export default MemberProject
+export default ProjectTeam
