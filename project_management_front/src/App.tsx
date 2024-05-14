@@ -64,9 +64,8 @@ function App() {
           setProjects(data.projects);
           console.log('Projects Fetch: ', data.projects);
         } else {
-          setErrorMessage('Received unexpected data');
+          setErrorMessage('An error ocurred while trying to connect to the Data Base');
           setIsErrorModalOpen(true);
-          setProjects([]);
         }
       })
       .catch(error => {
