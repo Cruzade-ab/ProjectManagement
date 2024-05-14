@@ -69,7 +69,7 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
     <div className="col-md-2">
       <p className="card-text"><strong>Member Id:</strong> {task.member_id}</p>
     </div>
-    <div className="col-md-4">
+    <div className="col-md-4 mt-3">
       <div className="d-grid gap-2 d-md-flex justify-content-md-end">
         <button className="btn btn-primary me-md-2 mb-2 mb-md-0" onClick={openModal}>
           <i className="fas fa-edit"></i> Edit
