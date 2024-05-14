@@ -1,14 +1,14 @@
+/*adds styles to the cards*/
 .card {
-    /* padding: 0 15px; */
     margin: 15px 15px 15px 15px;
-    /* background-color:  rgb(74, 124, 124); */
+    border: 1px solid black; 
+
 }
 
 .card-body {
-    /* background-color: #489ff7; */
     border-radius: 5px;
     padding: 20px;
-    background-color:  rgb(5, 89, 92);
+    background-color:  #486980;
     color: #f8f9fa; 
 }
 
@@ -22,15 +22,32 @@
     color: #b0b8be;
 }
 
-.btn {
-    font-size: 14px;
-    border-radius: 5px;
-}
 
+/*adds color to the navbar*/
 .custom-navbar {
-    background-color: rgb(46, 48, 48) !important;
+    background-color: #092866 !important;
     color: #f8f9fa;
   }
+
+  /*nav bar styles*/
+  .nav-text-color {
+    color: rgb(244, 246, 250) ;
+  }
+
+  .nav-text-color:hover {
+    color: rgb(194, 194, 231); 
+  }
+
+  .navbar-brand-bold {
+    font-weight: bold;
+  }
+
+  /*hamburger color*/
+  .navbar-toggler.navbar-hamburger {
+    background-color: #ffffff;
+  }
+
+/*text styles*/
   
   .text-color-one {
     color: rgb(244, 246, 250);
@@ -44,23 +61,6 @@
     color: rgb(228, 228, 230); 
   }
 
-  /*nav bar styles*/
-  .nav-text-color {
-    color: rgb(244, 246, 250) ;
-  }
-
-  .nav-text-color:hover {
-    color: rgb(32, 32, 133); 
-  }
-
-  .navbar-brand-bold {
-    font-weight: bold;
-  }
-
-  /*hamburger color*/
-  .navbar-toggler.navbar-hamburger {
-    background-color: #ffffff;
-  }
   
   /*In large viewports, it applies this specific width*/
   @media (min-width: 992px) {
@@ -69,31 +69,43 @@
     }
   }
   
+  /*button styles*/
   .add-project-btn {
-    background-color: rgb(65, 155, 110); 
+    background-color:#5597bd; 
     color: white; 
+    border: 2px solid #0d0d0e;
   }
   .add-project-btn:hover {
-    background-color: rgb(46, 97, 72); 
+    background-color: #570e63; 
 
   }
 
   .add-buttons{
-    background-color: rgb(46, 140, 156);
+    background-color: #1c66c7;
     color: white;
   }
 
   .add-buttons:hover{
-    background-color: rgb(27, 94, 105);
+    background-color:  #154e99;
   }
   
   
   .edit-button{
-    background-color: rgb(221, 147, 10);
+    background-color: #508666;
     color: white;
   }
 
   .edit-button:hover{
-    background-color: rgb(143, 103, 30);
+    background-color: #5e7768
 
+  }
+
+.btn {
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+/*Adds color to the body*/
+  body{
+    background-color: #f8f9fc;
   }

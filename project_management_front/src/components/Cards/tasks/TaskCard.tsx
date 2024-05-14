@@ -95,7 +95,7 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id }) => {
     <div style={{ backgroundColor: 'white', padding: '20px' }}>
       <div>
         <h1 className="text-color-two">Delete Task</h1>
-        <p className="text-color-two">Are you sure to delete the task {task.task_name}, by the member {task.member_name}?</p>
+        <p className="text-color-two">Are you sure you want to delete task {task.task_name}, by the member {task.member_name}?</p>
         <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
           <i className="fas fa-trash me-1"></i>Delete
         </button>

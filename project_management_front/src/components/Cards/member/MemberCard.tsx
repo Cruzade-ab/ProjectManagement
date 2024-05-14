@@ -86,16 +86,16 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
   return (<>
     <div className="card-body">
       <div className="row mb-4 ">
-        <div className="col-md-3">
+        <div className="col-md-4">
           <p className="card-text text-color-one"><strong>Name:</strong> {member.member_name}</p>
         </div>
-        <div className="col-md-3">
+        {/* <div className="col-md-3">
           <p className="card-text text-color-one"><strong>Id:</strong> {member.member_id}</p>
-        </div>
-        <div className="col-md-3 mb-2">
+        </div> */}
+        <div className="col-md-4 mb-2">
           <p className="card-text text-color-one"><strong>Role:</strong> {member.role}</p>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-4">
           <div className="d-grid gap-2 d-md-flex justify-content-md-end">
             <button className="btn edit-button me-md-2 mb-2 mb-md-0 " onClick={openEditModal}>
               <i className="fas fa-edit"></i> Edit
@@ -136,7 +136,7 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
         <div style={{ backgroundColor: 'white', padding: '20px' }}>
           <div>
             <h1 className="text-color-two">Delete Member</h1>
-            <p className="text-color-two">Are you sure to delete the member {member.member_name}?</p>
+            <p className="text-color-two">Are you sure you want to delete the member {member.member_name}?</p>
             <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
               <i className="fas fa-trash me-1"></i>Delete
             </button>
