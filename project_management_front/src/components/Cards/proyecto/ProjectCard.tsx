@@ -147,7 +147,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
     <div style={{ backgroundColor: 'white', padding: '20px' }}>
       <div>
         <h1 className='text-color-two'>Delete Project</h1>
-        <p className='text-color-two'>Are you sure you want to delete the project {project.project_name}?</p>
+        <p className='text-color-two'>Are you sure tou want to delete the project {project.project_name}?</p>
         <button className="btn btn-danger me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
           <i className="fas fa-trash me-1"></i>Delete
         </button>
