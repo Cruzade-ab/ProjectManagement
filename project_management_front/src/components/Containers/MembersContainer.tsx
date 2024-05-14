@@ -45,9 +45,8 @@ const MembersContainer: React.FC<MembersContainerProps> = ({ selectedProject }) 
                     setMembers(data.members);
                     console.log('Members Fetch: ', data.members);
                 } else {
-                    setErrorMessage('Recived data not spected');
+                    setErrorMessage('An error ocurred while trying to connect to the Data Base');
                     setIsErrorModalOpen(true);
-                    setMembers([]);
                 }
             })
             .catch(error => {

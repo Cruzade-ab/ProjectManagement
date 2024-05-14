@@ -37,9 +37,8 @@ const TasksContainers: React.FC<TasksContainerProps> = ({ selectedProject }) => 
                     setProjectTasks(data.data);
                     console.log('Task Fetch: ', data.data);
                 } else {
-                    setErrorMessage('Recived data not spected');
+                    setErrorMessage('An error ocurred while trying to connect to the Data Base');
                     setIsErrorModalOpen(true);
-                    setProjectTasks([]);
                 }
             })
             .catch(error => {
