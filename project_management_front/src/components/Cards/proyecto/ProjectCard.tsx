@@ -8,9 +8,10 @@ import { useNavigate } from 'react-router-dom';
 import ErrorModal from '../../Modal/ErrorModal';
 interface ProjectProps {
   project: Project;
+  fetchProjects: () => void;
 }
 
-const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
+const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
   //
   const navigate = useNavigate()
   
@@ -50,6 +51,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
 
       if(response.ok){
         console.log('Success deleting Project')
+        fetchProjects()
         navigate('/blank');
         navigate(-1)
       }else{
@@ -110,7 +112,9 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
                   project_id: project.project_id
                 }} 
             onSubmitSuccess={handleCloseDeleteModal}
-            handleCloseEditModal={closeModal} />
+            handleCloseEditModal={closeModal} 
+            fetchProjects={fetchProjects}
+            />
         </Modal>
 
 

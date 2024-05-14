@@ -10,9 +10,10 @@ interface ProjectFormProps {
   isEditing: boolean;
   onSubmitSuccess: () => void; // Call Back
   handleCloseEditModal?: () => void;
+  fetchProjects: () => void;
 }
 
-const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing , onSubmitSuccess, handleCloseEditModal}) => {
+const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing , onSubmitSuccess, handleCloseEditModal, fetchProjects}) => {
   const navigate = useNavigate()
 
 
@@ -54,6 +55,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing , on
         const api_response = await response.json();  
         console.log('Success:', api_response);
         onSubmitSuccess();
+        fetchProjects();
         navigate('/blank');
         navigate(-1);
 

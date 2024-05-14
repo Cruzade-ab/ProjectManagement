@@ -45,41 +45,45 @@ function App() {
   // Se definieron varios estados y una funcion para manejar la logica 
   // de aparecer un modal cuando ocurra un error al llamar a la api
 
-
+  useEffect(() => {
+    fetchProjects();
+  }, []);
   // Este fecth llama la api de get_all_products, mientras se procesa la solicitud carga una pantalla de cargar, de ocurrir un error lo
   // muestra en pantalla, de lo contrario asigna la data a la constante products
-  useEffect(() => {
-      fetch('http://127.0.0.1:5000/api/get_all_projects')
-          .then(response => {
-              if (!response.ok) {
-                  setErrorMessage('Network response was not ok');
-                  setIsErrorModalOpen(true);
-              }
-              return response.json();
-          }).then(data => {
-              if (Array.isArray(data.projects)) {
-                  setProjects(data.projects);
-                  console.log('Projects Fetch: ', data.projects);
-              } else {
-                  setErrorMessage('Recived not spected data');
-                  setIsErrorModalOpen(true);
-                  setProjects([]);
-              }
-          })
-          .catch(error => {
-              console.error('There was a problem with the fetch operation:', error);
-              setErrorMessage('There was a problem connecting to the server');
-              setIsErrorModalOpen(true);
-              setProjects([]);
-          }).finally(() => setLoading(false));
-  }, []);
+  const fetchProjects = () => {
+    setLoading(true);
+    fetch('http://127.0.0.1:5000/api/get_all_projects')
+      .then(response => {
+        if (!response.ok) {
+          setErrorMessage('Network response was not ok');
+          setIsErrorModalOpen(true);
+        }
+        return response.json();
+      }).then(data => {
+        if (Array.isArray(data.projects)) {
+          setProjects(data.projects);
+          console.log('Projects Fetch: ', data.projects);
+        } else {
+          setErrorMessage('Received unexpected data');
+          setIsErrorModalOpen(true);
+          setProjects([]);
+        }
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+        setErrorMessage('There was a problem connecting to the server');
+        setIsErrorModalOpen(true);
+        setProjects([]);
+      }).finally(() => setLoading(false));
+  };
+
 
   // Este return renderiza los compponentes base para la navegacion, estableciendo las posibles rutas y llamando los contenedores correspondientes
   // A su vez carga el componente Navbar que maneja el enrutado de la pagina como el filtrado individual de proyectos
   // Ademaas este return muestra placeholder de carga y un modal de ocurrir un error
   return (
     <Router>
-      <Navbar projects={projects} setSelectedProject={setSelectedProject}></Navbar>
+      <Navbar projects={projects} setSelectedProject={setSelectedProject} fetchProjects={fetchProjects}></Navbar>
         {loading ? (
           <div>
             <PlaceholderCard />
@@ -90,7 +94,7 @@ function App() {
           </div>
         ) : (
           <Routes>
-            <Route path="/" element={<ProjectsContainer selectedProject={selectedProject} projects={projects}/>} />
+            <Route path="/" element={<ProjectsContainer selectedProject={selectedProject} projects={projects}  fetchProjects={fetchProjects}/>} />
             <Route path="/tasks" element={<TasksContainers selectedProject={selectedProject}/>} /> 
             <Route path="/members" element={<MembersContainer selectedProject={selectedProject} />} />
           </Routes>

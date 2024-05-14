@@ -17,10 +17,11 @@ import ProjectForm from "../../forms/projects/ProjectForm";
 interface NavbarPropos {
     projects: Project[];
     setSelectedProject: (project: Project | null) => void;
+    fetchProjects: () => void;
 }
 // Se le pasan los props de Project y SelectedProject ya que desde el navbar el usuario va a poder filtrar por un proyecto individual
 
-const Navbar: React.FC<NavbarPropos> = ({ projects, setSelectedProject }) => {
+const Navbar: React.FC<NavbarPropos> = ({ projects, setSelectedProject, fetchProjects }) => {
     const [isModalOpen, setModalOpen] = useState(false);
     const openModal = () => setModalOpen(true);
     const closeModal = () => setModalOpen(false);
@@ -80,7 +81,7 @@ const Navbar: React.FC<NavbarPropos> = ({ projects, setSelectedProject }) => {
                         <button className="btn add-project-btn" onClick={openModal}>Add Project</button>
                         {/* //Si se clickea el boton de Add Project el modal se hace visible y muestra el formulario de Projectos */}
                         <Modal isOpen={isModalOpen} onClose={closeModal}>
-                            <ProjectForm isEditing={false} defaultValues={{ project_name: '', description: '', status: '' }} onSubmitSuccess={closeModal}/>
+                            <ProjectForm isEditing={false} defaultValues={{ project_name: '', description: '', status: '' }} onSubmitSuccess={closeModal} fetchProjects={fetchProjects}/>
                             {/* Este Formulario espera varios props ya que puede manejar la logica de editar y crear proyecto, en este caso 
                                 ambas props estan desactivadas (de manera logica), Tiene un props la funcion de onSubmitSuccess que cierra el 
                                 modal una vez completado exitosamente el formulario
