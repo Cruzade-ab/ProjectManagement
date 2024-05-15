@@ -43,6 +43,7 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
   // Delete Fetch Triggered by the Modal
   const handleDelete = async () => {
     const url = `http://172.16.5.78:5000/api/delete_member/${member.member_id}`
+    const url = `http://172.16.5.78:5000/api/delete_member/${member.member_id}`
     setDeleteModalOpen(false)
     // Se Oculta el Delete Modal 
 
@@ -84,72 +85,73 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
   }
 
   return (<>
-    <div className="card-body">
-      <div className="row mb-4 ">
-        <div className="col-md-4">
-          <p className="card-text text-color-one"><strong>Name:</strong> {member.member_name}</p>
-        </div>
-        {/* <div className="col-md-3">
-          <p className="card-text text-color-one"><strong>Id:</strong> {member.member_id}</p>
-        </div> */}
-        <div className="col-md-4 mb-2">
-          <p className="card-text text-color-one"><strong>Role:</strong> {member.role}</p>
-        </div>
-        <div className="col-md-4">
-          <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button className="btn edit-button me-md-2 mb-2 mb-md-0 " onClick={openEditModal}>
-              <i className="fas fa-edit"></i> Edit
-            </button>
-            <button className="btn btn-danger " onClick={openDeleteModal}>
-              <i className="fas fa-trash"></i> Delete
-            </button>
-          </div>
-        </div>
-      </div>
+<div className="card-body">
+  <div className="row mb-4 ">
+    <div className="col-md-4">
+      <p className="card-text text-color-one"><strong>Name:</strong> {member.member_name}</p>
     </div>
-    <hr />
+    {/* <div className="col-md-3">
+      <p className="card-text text-color-one"><strong>Id:</strong> {member.member_id}</p>
+    </div> */}
+    <div className="col-md-4 mb-2">
+      <p className="card-text text-color-one"><strong>Role:</strong> {member.role}</p>
+    </div>
+    <div className="col-md-4">
+      <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button className="btn edit-button me-md-2 mb-2 mb-md-0 " onClick={openEditModal}>
+          <i className="fas fa-edit"></i> Edit
+        </button>
+        <button className="btn btn-danger " onClick={openDeleteModal}>
+          <i className="fas fa-trash"></i> Delete
+        </button>
 
-    {/* 
-      Edit Modal With the asign default Values
-    */}
-    <Modal isOpen={isEditModalOpen} onClose={handleCloseEditModal}>
-      <div className="d-flex flex-column align-items-center w-100">
-        <MemberForm
-          isEditing={true}
-          defaultValues={{
-            member: {
-              member_id: member.member_id,
-              member_name: member.member_name,
-              role: member.role
-            },
-            project_id: project_id
-          }}
-          onSubmitSuccess={handleCloseEditModal}
-          handleCloseEditModal={handleCloseEditModal}
-        />
-      </div>
-    </Modal>
-    
-    {/* Delete Modal */}
-    <Modal isOpen={isDeleteModalOpen} onClose={handleCloseDeleteModal}>
-      <div className="d-flex justify-content-center">
-        <div style={{ backgroundColor: 'white', padding: '20px' }}>
-          <div>
-            <h1 className="text-color-two">Delete Member</h1>
-            <p className="text-color-two">Are you sure you want to delete the member {member.member_name}?</p>
-            <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
-              <i className="fas fa-trash me-1"></i>Delete
-            </button>
-            <button className="btn btn-secondary btn-lg" onClick={handleCloseDeleteModal} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
-              Cancel
-            </button>
-          </div>
+ 
+
+          {/* Edit modal */}
+          <Modal isOpen={isEditModalOpen} onClose={handleCloseEditModal}>
+            <div className="d-flex flex-column align-items-center w-100">
+              <MemberForm
+                isEditing={true} 
+                defaultValues={{
+                  member: {
+                    member_id: member.member_id,
+                    member_name: member.member_name,
+                    role: member.role
+                  },
+                  project_id: project_id
+                }}
+                onSubmitSuccess={handleCloseEditModal} 
+                handleCloseEditModal={handleCloseEditModal}
+              />
+            </div>
+          </Modal>
+
+          {/* Delete modal */}
+          <Modal isOpen={isDeleteModalOpen} onClose={handleCloseDeleteModal}>
+            <div className="d-flex justify-content-center">
+              <div style={{ backgroundColor: 'white', padding: '20px' }}>
+                <div>
+                  <h1 className="text-color-two">Delete Member</h1>
+                  <p className="text-color-two">Are you sure you want to delete the member {member.member_name}?</p>
+                  <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
+                    <i className="fas fa-trash me-1"></i>Delete
+                  </button>
+                  <button className="btn btn-secondary btn-lg" onClick={handleCloseDeleteModal} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Modal>
         </div>
       </div>
-    </Modal>
+    </div> 
+     </div>
+     <hr />
+    
 
-    {/* Error Modal */}
-    <ErrorModal errorMessage={errorMessage} isOpen={isErrorModalOpen} onClose={handleCloseErrorModal} />
+
+<ErrorModal errorMessage={errorMessage} isOpen={isErrorModalOpen} onClose={handleCloseErrorModal} />
 
   </>
   );

@@ -35,10 +35,16 @@ const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
   const openDeleteModal = () => setDeleteModalOpen(true);
   const handleCloseDeleteModal = () => setDeleteModalOpen(false);
 
+  const handleCloseErrorModal = () => setIsErrorModalOpen(false);
+  const closeModal = () => {
+    setEditModalOpen(false);
+    setDeleteModalOpen(false);
+  };
+  
 
-  // Handle Delete triggered by the Delete Modal
-  const handleDelete = async () => {
-    const url = `https://172.16.5.78/api/delete_project/${project.project_id}`
+
+  const handleDelete = async () => { 
+    const url = `http://172.16.5.78:5000/api/delete_project/${project.project_id}`
     setDeleteModalOpen(false)
 
     try {
@@ -103,6 +109,8 @@ const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
         <hr className="d-none d-md-block" />
         <p className="card-text mt-3 text-color-one">Description: {project.description}</p>
         <p className="card-text text-color-one">Status: {project.status}</p>
+        <p className="card-text mt-3 text-color-one">Description: {project.description}</p>
+        <p className="card-text text-color-one">Status: {project.status}</p>
         <Modal  isOpen={isEditModalOpen} onClose={handleCloseEditModal} >
           <ProjectForm 
             isEditing={true} 
@@ -117,37 +125,13 @@ const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
             handleCloseEditModal={closeModal} />
         </Modal>
 
-      {/* 
-      Delete Modal
-       */}
-      <Modal isOpen={isDeleteModalOpen} onClose={handleCloseDeleteModal}>
-        <div className="d-flex justify-content-center">
-          <div style={{ backgroundColor: 'white', padding: '20px' }}>
-            <div>
-              <h1>Delete Project</h1>
-              <p>Are you sure to delete the project {project.project_name}?</p>
-              <button className="btn btn-danger me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
-                <i className="fas fa-trash me-1"></i>Delete
-              </button>
-              <button className="btn btn-secondary " onClick={handleCloseDeleteModal} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      </Modal>
-       {/* 
-       Error Modal
-       */}
-      <ErrorModal errorMessage={errorMessage} isOpen={isErrorModalOpen} onClose={handleCloseErrorModal} />
-    </>
 
         <Modal isOpen={isDeleteModalOpen} onClose={handleCloseDeleteModal}>
   <div className="d-flex justify-content-center">
     <div style={{ backgroundColor: 'white', padding: '20px' }}>
       <div>
         <h1 className='text-color-two'>Delete Project</h1>
-        <p className='text-color-two'>Are you sure tou want to delete the project {project.project_name}?</p>
+        <p className='text-color-two'>Are you sure you want to delete the project {project.project_name}?</p>
         <button className="btn btn-danger me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
           <i className="fas fa-trash me-1"></i>Delete
         </button>
