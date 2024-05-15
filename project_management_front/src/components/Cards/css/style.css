@@ -5,11 +5,14 @@
 
 }
 
+/*header styles of the card */
 .card-body {
     border-radius: 5px;
     padding: 20px;
-    background-color:  #486980;
-    color: #f8f9fa; 
+    /* background-color:  #486980;     */
+    /* background-color:  #a2ceec; */
+    background-color:  #dee1e4;
+    color: #1c1c1d; 
 }
 
 .card-title {
@@ -50,7 +53,7 @@
 /*text styles*/
   
   .text-color-one {
-    color: rgb(244, 246, 250);
+    color: rgb(18, 18, 19);
   }
 
   .text-color-two {
@@ -71,32 +74,34 @@
   
   /*button styles*/
   .add-project-btn {
-    background-color:#5597bd; 
+    background-color:#1bb341; 
     color: white; 
-    border: 2px solid #0d0d0e;
   }
   .add-project-btn:hover {
-    background-color: #570e63; 
+    background-color: #158a32; 
+    color: white; 
 
   }
 
   .add-buttons{
-    background-color: #1c66c7;
+    background-color: #1a8f8f;
     color: white;
   }
 
   .add-buttons:hover{
-    background-color:  #154e99;
+    background-color:  #116e6e;
+    color: white; 
   }
   
   
   .edit-button{
-    background-color: #508666;
+    background-color: #da7d40;
     color: white;
   }
 
   .edit-button:hover{
-    background-color: #5e7768
+    background-color: #b1632f;
+    color: white; 
 
   }
 
