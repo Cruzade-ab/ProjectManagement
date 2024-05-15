@@ -114,6 +114,8 @@
     background-color: #f8f9fc;
   }
 
+/*Adds colors to the links*/
+
 .custom-active-link {
   --bs-navbar-active-color: rgba(0, 0, 0, 0) !important; /* Color transparente */
   color: rgb(240, 234, 234) !important; /* Color de texto transparente */
