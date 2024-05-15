@@ -24,7 +24,7 @@ const TasksContainers: React.FC<TasksContainerProps> = ({ selectedProject }) => 
 
 
     useEffect(() => {
-        fetch('https://172.16.5.78/api/get_all_tasks')
+        fetch('https://172.16.5.78:5000/api/get_all_tasks')
             .then(response => {
                 if (!response.ok) {
                     setErrorMessage('Network response was not ok');

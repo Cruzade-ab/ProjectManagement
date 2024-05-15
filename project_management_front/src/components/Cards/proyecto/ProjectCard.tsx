@@ -36,7 +36,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
 
 
   const handleDelete = async () => { 
-    const url = `https://172.16.5.78/api/delete_project/${project.project_id}`
+    const url = `https://172.16.5.78:5000/api/delete_project/${project.project_id}`
     setDeleteModalOpen(false)
 
     try {

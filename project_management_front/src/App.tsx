@@ -52,7 +52,7 @@ function App() {
   // muestra en pantalla, de lo contrario asigna la data a la constante products
   const fetchProjects = () => {
     setLoading(true);
-    fetch('https://172.16.5.78/api/get_all_projects')
+    fetch('https://172.16.5.78:5000/api/get_all_projects')
       .then(response => {
         if (!response.ok) {
           setErrorMessage('Network response was not ok');

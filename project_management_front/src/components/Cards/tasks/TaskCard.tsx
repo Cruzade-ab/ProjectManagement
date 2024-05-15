@@ -26,7 +26,7 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
   const closeDeleteModal = () => setDeleteModalOpen(false);
 
   const handleDelete = async () => {
-    const url = `https://172.16.5.78/api/delete_task/${task.task_id}`
+    const url = `https://172.16.5.78:5000/api/delete_task/${task.task_id}`
 
     try {
       const response = await fetch (url,{
