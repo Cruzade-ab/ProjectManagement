@@ -97,7 +97,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing, onSubmitS
     console.log('Member id is  ', data.member_id);
 
   
-    const url = isEditing ? `https://172.16.5.78:5000/api/update_task/${defaultValues.task?.task_id}/${data.member_id}` : `https://172.16.5.78:5000/api/new_task/${data.project_id}/${data.member_id}`;
+    const url = isEditing ? `http://172.16.5.78:5000/api/update_task/${defaultValues.task?.task_id}/${data.member_id}` : `http://172.16.5.78:5000/api/new_task/${data.project_id}/${data.member_id}`;
     const method = isEditing ? 'PUT' : 'POST';
 
 

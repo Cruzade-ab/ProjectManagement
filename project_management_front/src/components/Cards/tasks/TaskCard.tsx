@@ -34,7 +34,7 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id }) => {
 
   // Handle Delete Triggered by the Delete Modal
   const handleDelete = async () => {
-    const url = `https://172.16.5.78:5000/api/delete_task/${task.task_id}`
+    const url = `http://172.16.5.78:5000/api/delete_task/${task.task_id}`
 
     try {
       const response = await fetch(url, {
