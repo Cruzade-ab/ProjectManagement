@@ -75,7 +75,7 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id }) => {
       <p className="card-text text-color-one"><strong>End Date:</strong> {task.end_date}</p>
     </div>
     <div className="col-md-2">
-      <p className="card-text text-color-one"><strong>Member Id:</strong> {task.member_id}</p>
+      <p className="card-text text-color-one"><strong>Member Name:</strong> {task.member_name}</p>
     </div>
     <div className="col-md-4 mt-3 p-0">
       <div className="d-grid gap-2 d-md-flex justify-content-md-end">
