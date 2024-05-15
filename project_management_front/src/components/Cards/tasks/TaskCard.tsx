@@ -87,6 +87,8 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id }) => {
         </button>
 
 
+</div>
+</div>
 
         
 
@@ -128,8 +130,7 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id }) => {
           handleCloseEditModal={closeModal}
         />
       </Modal>
-
-      {/* Delete Modal */}
+      
       <Modal isOpen={isDeleteModalOpen} onClose={closeDeleteModal}>
         <div className="d-flex justify-content-center">
           <div style={{ backgroundColor: 'white', padding: '20px' }}>
@@ -151,4 +152,4 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id }) => {
   );
 };
 
-export default TaskCard
+export default TaskCard;

@@ -43,7 +43,6 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
   // Delete Fetch Triggered by the Modal
   const handleDelete = async () => {
     const url = `http://172.16.5.78:5000/api/delete_member/${member.member_id}`
-    const url = `http://172.16.5.78:5000/api/delete_member/${member.member_id}`
     setDeleteModalOpen(false)
     // Se Oculta el Delete Modal 
 

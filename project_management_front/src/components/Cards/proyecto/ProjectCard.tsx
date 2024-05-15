@@ -35,7 +35,6 @@ const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
   const openDeleteModal = () => setDeleteModalOpen(true);
   const handleCloseDeleteModal = () => setDeleteModalOpen(false);
 
-  const handleCloseErrorModal = () => setIsErrorModalOpen(false);
   const closeModal = () => {
     setEditModalOpen(false);
     setDeleteModalOpen(false);
@@ -109,8 +108,6 @@ const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
         <hr className="d-none d-md-block" />
         <p className="card-text mt-3 text-color-one">Description: {project.description}</p>
         <p className="card-text text-color-one">Status: {project.status}</p>
-        <p className="card-text mt-3 text-color-one">Description: {project.description}</p>
-        <p className="card-text text-color-one">Status: {project.status}</p>
         <Modal  isOpen={isEditModalOpen} onClose={handleCloseEditModal} >
           <ProjectForm 
             isEditing={true} 
@@ -122,7 +119,9 @@ const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
                   project_id: project.project_id
                 }} 
             onSubmitSuccess={handleCloseDeleteModal}
-            handleCloseEditModal={closeModal} />
+            handleCloseEditModal={closeModal} 
+            fetchProjects={fetchProjects}
+            />
         </Modal>
 
 
