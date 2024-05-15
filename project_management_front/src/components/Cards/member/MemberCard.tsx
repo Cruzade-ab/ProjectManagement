@@ -36,7 +36,7 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
 
 
   const handleDelete = async () => {
-    const url = `http://127.0.0.1:5000/api/delete_member/${member.member_id}`
+    const url = `https://172.16.5.78/api/delete_member/${member.member_id}`
     setDeleteModalOpen(false)
 
     try {
