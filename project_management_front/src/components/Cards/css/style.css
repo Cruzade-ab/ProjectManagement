@@ -114,24 +114,11 @@
     background-color: #f8f9fc;
   }
 
-
-/* En tu hoja de estilos */
-/* .active {
-  color: red; 
-} */
-
-.nav-link-color {
-  color: rgb(252, 10, 171); /* Cambia esto por los estilos que desees */
+.custom-active-link {
+  --bs-navbar-active-color: rgba(0, 0, 0, 0) !important; /* Color transparente */
+  color: rgb(240, 234, 234) !important; /* Color de texto transparente */
 }
 
-.custom-link {
-  /* Desactiva el subrayado y establece el color del texto */
-  text-decoration: none !important;
-  /* Otros estilos personalizados aquí */
+.is-active {
+  color: #50dcff !important; /* Cambia este valor al color deseado */
 }
-
-.custom-link:visited {
-  /* Establece el color para los enlaces visitados */
-  color: none !important; /* Cambia el color según sea necesario */
-}
-

@@ -76,13 +76,13 @@ const Navbar: React.FC<NavbarProps> = ({ projects, setSelectedProject, fetchProj
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className={`custom-link nav-link nav-text-color ${isActive('/') ? 'nav-link-color' : ''}`} aria-current="page" to="/">Projects</Link>
+                                <Link className={`custom-active-link nav-link nav-text-color ${isActive('/') ? 'is-active' : ''}`} aria-current="page" to="/">Projects</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className={`custom-link nav-link nav-text-color ${isActive('/members') ? 'nav-link-color' : ''}`} aria-current="page" to="/members">Members</Link>
+                                <Link className={`custom-active-link nav-link nav-text-color ${isActive('/members') ? 'is-active' : ''}`} aria-current="page" to="/members">Members</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className={`custom-link nav-link nav-text-color ${isActive('/tasks') ? 'nav-link-color' : ''}`} aria-current="page" to="/tasks">Tasks</Link>
+                                <Link className={`custom-active-link nav-link nav-text-color ${isActive('/tasks') ? 'is-active' : ''}`} aria-current="page" to="/tasks">Tasks</Link>
                             </li>
                             <li className="nav-item">
                                 <select className="form-select" onChange={handleProjectSelect} aria-label="Select project">
