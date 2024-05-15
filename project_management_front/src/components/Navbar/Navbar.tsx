@@ -69,7 +69,7 @@ const Navbar: React.FC<NavbarProps> = ({ projects, setSelectedProject, fetchProj
         <>
             <nav className="navbar navbar-expand-lg custom-navbar">
                 <div className="container-fluid">
-                <Link className="navbar-brand nav-text-color navbar-brand-bold custom-link" to="/">Project Management</Link>
+                <Link className="navbar-brand nav-text-color navbar-brand-bold custom-active-link" to="/">Project Management</Link>
                     <button className="navbar-toggler navbar-hamburger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
