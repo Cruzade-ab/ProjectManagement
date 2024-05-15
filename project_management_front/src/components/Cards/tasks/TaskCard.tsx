@@ -1,46 +1,56 @@
-import React, { useEffect, useState } from "react";
-import {Task} from "../../../interfaces/Task";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+// Hooks Utilizados
+
+import '../css/style.css';
+// Style
+
 import Modal from "../../Modal/modal";
 import TaskForm from "../../../forms/tasks/TaskForm";
-import '../css/style.css';
-import { useNavigate } from "react-router-dom";
+//Componentes para el Formulario/Modal
 
+import { Task } from "../../../interfaces/Task";
 interface TasksProps {
   task: Task;
   project_id?: number | undefined;
 }
 
 
-const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
+const TaskCard: React.FC<TasksProps> = ({ task, project_id }) => {
   const navigate = useNavigate()
-  
+  //useNavugate hook inicializado en la variable navigate 
+
+
+  //Edit Modal Logic  
   const [isModalOpen, setModalOpen] = useState(false);
-  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-
-
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
-
+  //Delete Modal Logic
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const openDeleteModal = () => setDeleteModalOpen(true);
   const closeDeleteModal = () => setDeleteModalOpen(false);
 
+
+  // Handle Delete Triggered by the Delete Modal
   const handleDelete = async () => {
     const url = `http://172.16.5.78:5000/api/delete_task/${task.task_id}`
 
     try {
-      const response = await fetch (url,{
+      const response = await fetch(url, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         }
       })
 
-      if(response.ok){
+      if (response.ok) {
         console.log('Success deleting Task')
+        
+        // Simulate a page Reoload with the useNavigate Hook
         navigate('/blank');
         navigate(-1)
-      }else{
+      } else {
         console.log('Error deleting Task')
       }
 
@@ -98,30 +108,45 @@ const TaskCard: React.FC<TasksProps> = ({ task, project_id}) => {
 </Modal>
         </div>
       </div>
-    </div>
-  </div> 
-{/* </div>
-{/* </div> */}
-<hr />
-<Modal isOpen={isModalOpen} onClose={closeModal}>
-  <TaskForm 
-    isEditing={true} 
-    defaultValues={{
-      task: {
-        task_name: task.task_name,
-        start_date: task.start_date,
-        end_date: task.end_date,
-        task_id: task.task_id,
-        member_id: task.member_id,
-      },
-      project_id: project_id
-    }}
-    onSubmitSuccess={closeModal}
-    handleCloseEditModal={closeModal} 
-  />    
-</Modal>
+      <hr />
 
-</>
+      {/* Edit Modal */}
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <TaskForm
+          isEditing={true}
+          defaultValues={{
+            task: {
+              task_name: task.task_name,
+              start_date: task.start_date,
+              end_date: task.end_date,
+              task_id: task.task_id,
+              member_id: task.member_id,
+            },
+            project_id: project_id
+          }}
+          onSubmitSuccess={closeModal}
+          handleCloseEditModal={closeModal}
+        />
+      </Modal>
+
+      {/* Delete Modal */}
+      <Modal isOpen={isDeleteModalOpen} onClose={closeDeleteModal}>
+        <div className="d-flex justify-content-center">
+          <div style={{ backgroundColor: 'white', padding: '20px' }}>
+            <div>
+              <h1>Delete Task</h1>
+              <p>Are you sure to delete the task {task.task_name}, by the member {task.member_name}?</p>
+              <button className="btn btn-danger btn-lg me-2" onClick={handleDelete} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
+                <i className="fas fa-trash me-1"></i>Delete
+              </button>
+              <button className="btn btn-secondary btn-lg" onClick={closeDeleteModal} style={{ padding: '5px 10px', fontSize: '1.2rem' }}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </Modal>
+    </>
 
   );
 };

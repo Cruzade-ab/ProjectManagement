@@ -1,29 +1,37 @@
 import React, { useState } from 'react';
-import {Project }from '../../../interfaces/Project';
+import { useNavigate } from 'react-router-dom';
+//Hooks utilizados
+
+import '../css/style.css';
+
 import Modal from '../../Modal/modal';
 import ProjectForm from '../../../forms/projects/ProjectForm';
-import '../css/style.css';
-import { json } from 'stream/consumers';
-import { useNavigate } from 'react-router-dom';
 import ErrorModal from '../../Modal/ErrorModal';
+// Componentes Utilizados
+
+import { Project } from '../../../interfaces/Project';
 interface ProjectProps {
   project: Project;
   fetchProjects: () => void;
 }
+// Interface de data objects y funciones utilizados en el componente
 
 const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
-  //
   const navigate = useNavigate()
-  
-  const [isEditModalOpen, setEditModalOpen] = useState(false);
-  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string>('');
-  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+  // Navigate Hook inicializado para poder utilizarlo
 
-  
+  // Edit Modal Visibility Logic
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
   const openEditModal = () => setEditModalOpen(true);
   const handleCloseEditModal = () => setEditModalOpen(false);
+  
+  // Error Modal Visibility Logic
+  const [errorMessage, setErrorMessage] = useState<string>('');  
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+  const handleCloseErrorModal = () => setIsErrorModalOpen(false);
 
+  // Delete Modal Visibility Logic
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const openDeleteModal = () => setDeleteModalOpen(true);
   const handleCloseDeleteModal = () => setDeleteModalOpen(false);
 
@@ -40,7 +48,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
     setDeleteModalOpen(false)
 
     try {
-      const response = await fetch (url,{
+      const response = await fetch(url, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -49,12 +57,12 @@ const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
 
       const data = await response.json();
 
-      if(response.ok){
+      if (response.ok) {
         console.log('Success deleting Project')
         fetchProjects()
         navigate('/blank');
         navigate(-1)
-      }else{
+      } else {
         console.log('Error deleting Project')
         setErrorMessage(data.error);
         setIsErrorModalOpen(true);
@@ -71,7 +79,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
       setIsErrorModalOpen(true);
     }
   }
-  
+
 
 
   return (
@@ -101,6 +109,8 @@ const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
         <hr className="d-none d-md-block" />
         <p className="card-text mt-3 text-color-one">Description: {project.description}</p>
         <p className="card-text text-color-one">Status: {project.status}</p>
+        <p className="card-text mt-3 text-color-one">Description: {project.description}</p>
+        <p className="card-text text-color-one">Status: {project.status}</p>
         <Modal  isOpen={isEditModalOpen} onClose={handleCloseEditModal} >
           <ProjectForm 
             isEditing={true} 
@@ -112,9 +122,7 @@ const ProjectCard: React.FC<ProjectProps> = ({ project, fetchProjects }) => {
                   project_id: project.project_id
                 }} 
             onSubmitSuccess={handleCloseDeleteModal}
-            handleCloseEditModal={closeModal} 
-            fetchProjects={fetchProjects}
-            />
+            handleCloseEditModal={closeModal} />
         </Modal>
 
 

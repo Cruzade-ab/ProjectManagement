@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // Se importan los hooks que se utilizaran en este componente
 
-import {Member} from "../../../interfaces/Member";
+import { Member } from "../../../interfaces/Member";
 // Interfaz del data object Member
 
 import Modal from "../../Modal/modal";
@@ -14,54 +14,67 @@ interface MembersProps {
   member: Member;
   project_id?: number | undefined;
 }
-// Se definen el tipado de los props que utilizaria n
+// Se definen los props a utilizar
 
 
 const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
-  const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  // const para manejar y establecer el mensaje de error
 
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const handleCloseErrorModal = () => setIsErrorModalOpen(false);
+  //Error Visibility Modal Logic
+
   const [isEditModalOpen, setEditModalOpen] = useState(false);
-  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-
-
   const openEditModal = () => setEditModalOpen(true);
   const handleCloseEditModal = () => setEditModalOpen(false);
+  // Edit Visibility Modal Logic
 
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const openDeleteModal = () => setDeleteModalOpen(true);
   const handleCloseDeleteModal = () => setDeleteModalOpen(false);
+  // Delete Visibility Modal Logic
 
-  const handleCloseErrorModal = () => setIsErrorModalOpen(false);
+
+  const navigate = useNavigate()
+  // Inicializando el hook en la const navigate para utilizarlo 
 
 
+  // Delete Fetch Triggered by the Modal
   const handleDelete = async () => {
     const url = `http://172.16.5.78:5000/api/delete_member/${member.member_id}`
+    const url = `http://172.16.5.78:5000/api/delete_member/${member.member_id}`
     setDeleteModalOpen(false)
+    // Se Oculta el Delete Modal 
 
     try {
-      const response = await fetch (url,{
+      const response = await fetch(url, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         }
       })
+      // Se realiza el fetch con todos los parapretos requeridos y se guarda su respuesta en el const response
 
       const data = await response.json();
+      // Se asigma la data del response en formato json
 
-      if(response.ok){
+      // If / else manejan el estado de la respuesta Succes/Failed
+      if (response.ok) {
         console.log('Success deleting Member')
         navigate('/blank');
         navigate(-1)
-      }else{
+        // Este patron simula una recarga de la pagina, navegando en a una pagina innexistente y volviendo a la actual
+
+      } else {
         console.log('Error deleting Member')
         setErrorMessage(data.error);
         setIsErrorModalOpen(true);
+        //De el response resultar falso se le asigna el error al const errorMessage y se hace visible el modal
       }
 
     } catch (error) {
       console.error('Failed to delete member:', error);
-
       if (error instanceof Error) {
         setErrorMessage(error.message);
       } else {
@@ -140,7 +153,7 @@ const MemberCard: React.FC<MembersProps> = ({ member, project_id }) => {
 
 <ErrorModal errorMessage={errorMessage} isOpen={isErrorModalOpen} onClose={handleCloseErrorModal} />
 
-</>
+  </>
   );
 };
 
