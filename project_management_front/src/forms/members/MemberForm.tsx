@@ -1,10 +1,14 @@
 // src/components/ProjectForm.tsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+// Hooks y modulos necesarios
+
 import { memberSchema } from './SchemaValidation';
 import { Member } from '../../interfaces/Member';
-import { useNavigate } from 'react-router-dom';
+// Schema e Interfaz Utilizada 
+
 
 interface MemberFormProps {
   defaultValues:  {
@@ -15,6 +19,7 @@ interface MemberFormProps {
   onSubmitSuccess: () => void;
   handleCloseEditModal: () => void;
 }
+// Props logicas para la funcionalidad del form
 
 const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSubmitSuccess, handleCloseEditModal}) => {
   const navigate = useNavigate()
@@ -23,6 +28,7 @@ const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSu
   interface FormValues extends Member{
     project_id?: number;
   }
+  // Se extiende las propiedades de members pasandole el project_id
 
 
   const {
@@ -39,13 +45,17 @@ const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSu
       member_id: defaultValues.member?.member_id
     }
   });
+  //Inicializacion de la funcionalidades de react-hook-form
 
 
   React.useEffect(() => {
     console.log('Resetting form with defaultValues:', defaultValues);
     reset(defaultValues);
   }, [defaultValues, reset]);
+  // Al momneto de montar el componente se asignan los default values al editar 
 
+
+  // Submit Logic que depende la variable logica isEditing para editar o crear 
   const onSubmit: SubmitHandler<Member> = async data => {
     console.log('Form data', data);
 
@@ -82,6 +92,7 @@ const MemberForm: React.FC<MemberFormProps> = ({ defaultValues, isEditing , onSu
   console.log('Form errors:', errors);
 
 
+  //Inputs que se asocial a la validacion de SchemaValidation de zod resolver con react-hook-form
   return (
 <form onSubmit={handleSubmit(onSubmit)} className="mt-4 w-100">
   <h1 className='text-center text-color-two'>{isEditing ? 'Edit Member' : 'Add Member'}</h1>

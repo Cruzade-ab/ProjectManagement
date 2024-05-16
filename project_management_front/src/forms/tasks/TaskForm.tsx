@@ -2,9 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useNavigate } from 'react-router-dom';
+// Hooks y modulos utilizados
+
 import { taskSchema } from './SchemaValidation';
 import {Task }from '../../interfaces/Task';
-import { useNavigate } from 'react-router-dom';
+//Schema e interfaz representando los task
 
 interface TaskFormProps {
   defaultValues: {
@@ -15,11 +18,13 @@ interface TaskFormProps {
   onSubmitSuccess: () => void;
   handleCloseEditModal: () => void;
 }
+//Props para la funcionalidad logica del form
 
 interface MemberList {
   member_id: number;
   member_name: string;
 }
+// Interfaz para las lista de miembros de un proyecto, para asociarlo a un task
 
 const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing, onSubmitSuccess, handleCloseEditModal }) => {
   const [members, setMembers] = useState<MemberList[]>([]);
@@ -34,6 +39,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing, onSubmitS
         .catch(console.error);
     }
   }, [project_id]);
+  // Se llama a los members del proyecto para asociarlos con los ID
 
 
   //Formating Date 
@@ -77,6 +83,8 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing, onSubmitS
       project_id 
     }
   });
+  // Al momneto de montar el componente se asignan los default values al editar 
+
 
 
   React.useEffect(() => {
@@ -86,12 +94,15 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing, onSubmitS
       project_id
     });
   }, [defaultValues, reset]);
+  // Al momneto de montar el componente se asignan los default values al editar 
 
   console.log("Initial default values for form:", {
     ...formattedTaskValues,
     project_id
   })
 
+
+  // Submit Logic que depende la variable logica isEditing para editar o crear 
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
     console.log('Data for updating task is ', data);
     console.log('Member id is  ', data.member_id);
@@ -129,7 +140,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, isEditing, onSubmitS
 
   console.log('Form errors:', errors);
 
-
+  //Inputs que se asocial a la validacion de SchemaValidation de zod resolver con react-hook-form
   return (
 <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
   <h1 className="mb-4 text-center text-color-two">{isEditing ? 'Edit Task' : 'Create Task'}</h1>

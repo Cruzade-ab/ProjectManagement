@@ -1,10 +1,13 @@
-// src/components/ProjectForm.tsx
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useNavigate} from 'react-router-dom';
+// Hooks y modulos necesarios
+
 import { projectSchema } from './SchemaValidation';
 import {Project} from '../../interfaces/Project';
-import { useNavigate} from 'react-router-dom';
+// Schema e Interfaz Utilizada 
+
 interface ProjectFormProps {
   defaultValues: Project;
   isEditing: boolean;
@@ -12,6 +15,8 @@ interface ProjectFormProps {
   handleCloseEditModal?: () => void;
   fetchProjects: () => void;
 }
+// Props logicas para la funcionalidad del form
+
 
 const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing , onSubmitSuccess, handleCloseEditModal, fetchProjects}) => {
   const navigate = useNavigate()
@@ -26,12 +31,15 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing , on
     resolver: zodResolver(projectSchema),
     defaultValues
   });
+  //Inicializacion de la funcionalidades de react-hook-form
 
 
   React.useEffect(() => {
     console.log('Resetting form with defaultValues:', defaultValues);
     reset(defaultValues);
   }, [defaultValues, reset]);
+  // Al momneto de montar el componente se asignan los default values al editar 
+
 
   const onSubmit: SubmitHandler<Project> = async data => {
     console.log('Attempting to submit form', data);
@@ -71,7 +79,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ defaultValues, isEditing , on
   console.log('Form errors:', errors);
 
 
-
+  //Inputs que se asocial a la validacion de SchemaValidation de zod resolver con react-hook-form
   return (
     <>
   <form onSubmit={handleSubmit(onSubmit)} className="mt-4">

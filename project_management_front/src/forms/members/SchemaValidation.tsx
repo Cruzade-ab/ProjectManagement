@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+//Documento que representa las validaciones antes de enviar el formulario
+
 
 const memberSchema = z.object({
   project_id: z.number(),
