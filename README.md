@@ -50,10 +50,10 @@ Contributions are welcome! If you want to contribute to the front-end of the Pro
 
 ## Member Repositories
 
-- [Genesis Ojeda]()
-- [Ramon Valentin]()
-- [Abimael Santa]()
-- [Abielmelex]()
+- [Genesis Ojeda](https://github.com/DevQueenPR/project_management)
+- [Ramon Valentin](https://github.com/RamonvCS/Project-Management-COMPLETED)
+- [Abimael Santa](https://github.com/Cruzade-ab/ProjectManagementFront)
+- [Abielmelex](https://github.com/Abielmelex/Project-Management)
 
 ## Contact
 
