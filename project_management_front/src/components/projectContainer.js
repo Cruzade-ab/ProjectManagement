@@ -4,7 +4,7 @@ export default function ProjectContainer(){
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://172.16.5.78:5000/api/projects') 
+        fetch('http://0.tcp.ngrok.io:16970/api/projects') 
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -18,6 +18,8 @@ export default function ProjectContainer(){
                 console.error('There was a problem with the fetch operation:', error);
             });
     }, []);
+
+    console.log(products)
 
     return <div> {products}</div>
 }
