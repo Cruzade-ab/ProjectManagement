@@ -1,6 +1,6 @@
-# Project Management Platform
+# Project Organizer
 
-The Project Management Platform is a web-based application designed to facilitate project management tasks efficiently. It enables users to swiftly create projects, add tasks to projects, and effortlessly manage projects, all without requiring user accounts. With its intuitive front-end interface, users can visually interact with their projects, making the management process more engaging and user-friendly.
+En un ambiente profesional, donde se dirigen múltiples proyectos simultáneos, la organización es esencial, así como el tener un enfoque conciso sobre los objetivos para garantizar el mayor éxito de un producto.  El project organizer es una plataforma de administración de proyectos que tiene como objetivo principal la organización de proyectos que a su vez está enfocado en la productividad y eficiencia de los proyectos. Este, proveerá una visión clara sobre cada uno de los proyectos, miembros y tareas, permitiendo la creación, actualización y eliminación de los mismos según las necesidades particulares de cada usuario. Además, mejora la colaboración y la distribución efectiva de las tareas, así como el aumento de la productividad y la toma de decisiones, todo en un solo lugar. Cada proyecto cuenta con su descripción y estado, así como los miembros que poseerán sus respectivos roles. Finalmente, cada tarea provee la opción de pautar fechas de inicio y fin, con el propósito de facilitar la planificación y seguimiento de las tareas.  El project organizer es la solución integral para la gestión de proyectos, equipos y tareas, proveyendo una plataforma fácil, eficiente y crucial para el éxito de un proyecto. 
 
 ## Table of Contents
 
